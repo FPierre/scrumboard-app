@@ -2,4 +2,4 @@
   <div class='sprints-page'>
     <nuxt-child/>
   </div>
-</template
+</template>
