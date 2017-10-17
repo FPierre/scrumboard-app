@@ -11,6 +11,9 @@ module.exports = {
     ]
   },
   loading: { color: '#3B8070' },
+  css: [
+    '@/assets/stylesheets/bulma-override.scss'
+  ],
   build: {
     vendor: ['axios'],
     extend (config, ctx) {
