@@ -10,3 +10,11 @@ Vue.component('velocity-chart', {
     this.renderChart(this.data, this.options)
   }
 })
+
+Vue.component('burndown-chart', {
+  extends: Line,
+  props: ['data', 'options'],
+  mounted () {
+    this.renderChart(this.data, this.options)
+  }
+})
