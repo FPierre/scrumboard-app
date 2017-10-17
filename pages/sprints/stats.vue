@@ -1,29 +1,35 @@
 <template>
   <div class='sprints-stats-page'>
-    <bar-chart :data='barChartData' :options='{ maintainAspectRatio: false }'></bar-chart>
+    <burndown-chart v-if='showLine' :data='burndown' :options='options' />
   </div>
 </template>
 
 <script>
-import BarChart from '~/components/BarChart'
-
 export default {
   data () {
     return {
-      barChartData: {
-        labels: ['label 1'],
-        datasets: [
-          {
-            label: 'Nuxt.js Commit Activity',
-            backgroundColor: '#41b883',
-            data: [1, 2]
-          }
-        ]
-      }
+      showLine: false
     }
   },
-  components: {
-    BarChart
+  asyncData () {
+    const burndown = {
+      labels: ['#1', '#2', '#3', '#4', '#5', '#6'],
+      datasets: [
+        {
+          label: 'Effort points done',
+          backgroundColor: '#ce473f',
+          data: [40, 55, 43, 39, 50, 40]
+        }
+      ]
+    }
+
+    const options = { responsive: false }
+
+    return { burndown, options }
+  },
+  mounted () {
+    // showLine will only be set to true on the client. This keeps the DOM-tree in sync.
+    this.showLine = true
   }
 }
 </script>

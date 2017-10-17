@@ -15,8 +15,8 @@ module.exports = {
     '@/assets/stylesheets/bulma-override.scss'
   ],
   plugins: [
-    '~/plugins/vue-chartjs',
-    '~/plugins/vue-scrollto'
+    { src: '~plugins/vue-chartjs', ssr: false },
+    { src: '~plugins/vue-scrollto' }
   ],
   build: {
     vendor: [
