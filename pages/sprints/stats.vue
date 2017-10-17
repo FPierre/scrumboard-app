@@ -1,6 +1,6 @@
 <template>
   <div class='sprints-stats-page'>
-    <velocity-chart v-if='showLine' :data='velocityData' :options='options' />
+    <velocity-chart v-if='showLine' :data='velocityData' :options='options'/>
   </div>
 </template>
 

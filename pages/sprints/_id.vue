@@ -6,6 +6,7 @@
 
       <div class='field'>
         <label class='label'>How many effort point done yesterday?</label>
+
         <div class='control'>
           <input class='input' type='text' placeholder='3, 4, 5, ...' v-model='pointsDone'>
         </div>
@@ -13,7 +14,7 @@
 
       <button class='button is-medium is-success'>Save</button>
 
-      <burndown-chart v-if='showLine' :data='burndownData' :options='options' />
+      <burndown-chart v-if='showLine' :data='burndownData' :options='options'/>
     </div>
   </div>
 </template>
