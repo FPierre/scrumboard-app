@@ -1,22 +1,39 @@
-# scrumboard-app
+# Scrumboard
 
 > Monitor your SCRUM
 
-## Build Setup
+## Build setup
 
-``` bash
-# install dependencies
-$ npm install # Or yarn install
+Install dependencies:
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+```bash
+$ yarn install
+```
 
-# build for production and launch server
-$ npm run build
-$ npm start
+Serve with hot reload at `localhost:3000`:
 
-# generate static project
-$ npm run generate
+```bash
+$ yarn run dev
+```
+
+Build for production and launch server:
+
+```bash
+$ yarn run build
+$ yarn start
+```
+
+Generate static project:
+
+```bash
+$ yarn run generate
 ```
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+
+## Possible usage
+
+https://tympanus.net/Development/FullscreenForm/
+https://tympanus.net/codrops/2014/04/01/minimal-form-interface/
+https://tympanus.net/codrops/2013/05/21/natural-language-form-with-custom-input-elements/
+https://craigbarber.typeform.com/to/i8ptRE
