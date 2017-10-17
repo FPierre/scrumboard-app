@@ -14,6 +14,9 @@ module.exports = {
   css: [
     '@/assets/stylesheets/bulma-override.scss'
   ],
+  modules: [
+    '@nuxtjs/font-awesome'
+  ],
   plugins: [
     { src: '~plugins/vue-chartjs', ssr: false },
     { src: '~plugins/vue-scrollto' }
