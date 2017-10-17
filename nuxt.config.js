@@ -14,8 +14,12 @@ module.exports = {
   css: [
     '@/assets/stylesheets/bulma-override.scss'
   ],
+  plugins: ['~/plugins/vue-scrollto'],
   build: {
-    vendor: ['axios'],
+    vendor: [
+      'axios',
+      'vue-scrollto'
+    ],
     extend (config, ctx) {
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({
