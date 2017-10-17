@@ -14,10 +14,15 @@ module.exports = {
   css: [
     '@/assets/stylesheets/bulma-override.scss'
   ],
-  plugins: ['~/plugins/vue-scrollto'],
+  plugins: [
+    '~/plugins/vue-chartjs',
+    '~/plugins/vue-scrollto'
+  ],
   build: {
     vendor: [
       'axios',
+      'chart.js',
+      'vue-chartjs',
       'vue-scrollto'
     ],
     extend (config, ctx) {
