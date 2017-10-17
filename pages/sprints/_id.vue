@@ -32,12 +32,37 @@ export default {
   asyncData ({ params }) {
     // let { data } = await axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
 
+    // Mock
+    let { sprints } = JSON.parse({
+      "sprints": [
+        {
+          "id": 1,
+          "developers": 4,
+          "days": 5,
+          "points": 50,
+          "progress": [
+            { "day": 1, "done": 4 },
+            { "day": 2, "done": 11 },
+            { "day": 3, "done": 8 },
+            { "day": 4, "done": 9 },
+            { "day": 5, "done": 10 }
+          ]
+        }
+      ]
+    })
+
+    const { progress, points, days } = sprints[0]
+
+    const labels = progress.map(d => d.day)
+    const actuallyDone = progress.map(d => d.done)
+    const supposedlyDone = this.supposedToBeDone(points, days)
+
     const burndownData = {
-      labels: ['1', '2', '3', '4', '5'],
+      labels,
       datasets: [
         {
           borderColor: '#ce473f',
-          data: [50, 36, 24, 12, 0],
+          data: supposedlyDone,
           fill: false,
           label: 'Effort supposedly done',
           lineTension: 0,
@@ -45,7 +70,7 @@ export default {
         },
         {
           borderColor: '#ce473f',
-          data: [47, 40, 32, 28, 19],
+          data: actuallyDone,
           fill: false,
           label: 'Effort actually done',
           lineTension: 0,
@@ -66,6 +91,11 @@ export default {
   mounted () {
     // showLine will only be set to true on the client. This keeps the DOM-tree in sync.
     this.showLine = true
+  },
+  method: {
+    supposedToBeDone (points, days) {
+      // return [points / days]
+    }
   }
 }
 </script>
