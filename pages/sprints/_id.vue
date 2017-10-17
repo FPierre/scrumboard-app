@@ -5,7 +5,7 @@
       <h2 class='subtitle'>Day {{ day }}/{{ days }}</h2>
 
       <div class='field'>
-        <label class='label'>How many effort point done yesterday?</label>
+        <label class='label'>What effort was made yesterday?</label>
 
         <div class='control'>
           <input class='input' type='text' placeholder='3, 4, 5, ...' v-model='pointsDone'>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
   data () {
@@ -29,39 +29,50 @@ export default {
       showLine: false
     }
   },
-  asyncData ({ params }) {
-    // let { data } = await axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
+  async asyncData ({ params }) {
+    // console.log(params)
 
     // Mock
-    let { sprints } = JSON.parse({
-      "sprints": [
-        {
-          "id": 1,
-          "developers": 4,
-          "days": 5,
-          "points": 50,
-          "progress": [
-            { "day": 1, "done": 4 },
-            { "day": 2, "done": 11 },
-            { "day": 3, "done": 8 },
-            { "day": 4, "done": 9 },
-            { "day": 5, "done": 10 }
-          ]
-        }
-      ]
-    })
+    const { data } = await axios.get(`http://localhost:3004/sprints`)
 
-    const { progress, points, days } = sprints[0]
+    console.log(data)
+
+    const { id, progress, points, days } = data[0]
 
     const labels = progress.map(d => d.day)
-    const actuallyDone = progress.map(d => d.done)
-    const supposedlyDone = this.supposedToBeDone(points, days)
+
+    // const actuallyDone = progress.map(d => points - d.done)
+
+    let toto = points
+    const actuallyDone = progress.reduce((memo, p, index) => {
+      console.log(memo)
+
+      toto = memo[index] - p.done
+      memo.push(toto)
+      return memo
+    }, [points])
+
+    //
+    const t = [points]
+    const div = points / (days - 1)
+    let rest = points
+
+    for (let i = 0; i < days; i++) {
+      t[i] = rest - div
+      rest = t[i]
+    }
+
+    const supposedlyDone = t
+
+    console.log(supposedlyDone)
+
+    const day = progress.findIndex(d => !d.done) + 1
 
     const burndownData = {
       labels,
       datasets: [
         {
-          borderColor: '#ce473f',
+          borderColor: '#bbb',
           data: supposedlyDone,
           fill: false,
           label: 'Effort supposedly done',
@@ -82,8 +93,9 @@ export default {
     const options = { responsive: false }
 
     return {
-      day: 2,
-      days: 5,
+      id,
+      day,
+      days,
       burndownData,
       options
     }
@@ -92,7 +104,7 @@ export default {
     // showLine will only be set to true on the client. This keeps the DOM-tree in sync.
     this.showLine = true
   },
-  method: {
+  methods: {
     supposedToBeDone (points, days) {
       // return [points / days]
     }
