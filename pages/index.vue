@@ -62,6 +62,6 @@
   </section>
 </template>
 
-<!-- <nuxt-link :to='{ name: "sprints-create" }'>Create sprint</nuxt-link>
+<!--
 <nuxt-link :to='{ name: "sprints-id", params: { id: 1 } }'>Sprint 1</nuxt-link>
 -->
