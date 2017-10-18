@@ -10,26 +10,21 @@
           Monitor your SCRUM
         </h2>
 
-        <nuxt-link :to='{ name: "users-login" }' class='button' v-if='!$store.state.authUser'>
+        <nuxt-link :to='{ name: "users-login" }' class='button' v-if='!isAuth'>
           Login
         </nuxt-link>
       </div>
     </div>
-
-    <div class='hero-foot'>
-      <nav class='tabs'>
-        <div class='container'>
-          <ul>
-            <!-- <li class='is-active'><a>Overview</a></li> -->
-            <li>
-              <nuxt-link :to='{ name: "sprints" }'>Sprints</nuxt-link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
   </section>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  computed: mapGetters(['isAuth'])
+}
+</script>
 
 <!--
 <nuxt-link :to='{ name: "sprints-id", params: { id: 1 } }'>Sprint 1</nuxt-link>
