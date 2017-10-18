@@ -10,7 +10,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Monitor your SCRUM' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Raleway:400,700' }
     ]
   },
   loading: { color: '#3B8070' },
