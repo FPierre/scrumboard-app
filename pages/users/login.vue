@@ -28,7 +28,7 @@
           <div class='columns'>
             <div class='column is-half is-offset-one-quarter'>
               <form v-if='!$store.state.authUser' @submit.prevent='login'>
-                <p class='error' v-if='formError'>{{ formError }}</p>
+                <p class='error' v-if='error'>{{ error }}</p>
 
                 <p class='has-text-centered'>
                   <i>To login, use <b>demo</b> as username and <b>demo</b> as password.</i>
@@ -41,7 +41,7 @@
                     <input type='text'
                            class='input'
                            placeholder='Username'
-                           v-model='formUsername'
+                           v-model='username'
                            autofocus>
                   </div>
                 </div>
@@ -53,7 +53,7 @@
                     <input type='password'
                            class='input'
                            placeholder='Username'
-                           v-model='formPassword'>
+                           v-model='password'>
                   </div>
                 </div>
 
@@ -80,33 +80,33 @@
 export default {
   data () {
     return {
-      formError: null,
-      formUsername: '',
-      formPassword: ''
+      error: null,
+      username: '',
+      password: ''
     }
   },
   methods: {
     async login () {
       try {
         await this.$store.dispatch('login', {
-          username: this.formUsername,
-          password: this.formPassword
+          username: this.username,
+          password: this.password
         })
 
-        this.formError = null
-        this.formUsername = ''
-        this.formPassword = ''
+        this.error = null
+        this.username = ''
+        this.password = ''
 
         this.$router.replace({ name: 'sprints' })
       } catch (e) {
-        this.formError = e.message
+        this.error = e.message
       }
     },
     async logout () {
       try {
         await this.$store.dispatch('logout')
       } catch (e) {
-        this.formError = e.message
+        this.error = e.message
       }
     }
   }
