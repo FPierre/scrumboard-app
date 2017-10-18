@@ -1,3 +1,6 @@
+const bodyParser = require('body-parser')
+const session = require('express-session')
+
 module.exports = {
   head: {
     title: 'scrumboard-app',
@@ -38,5 +41,16 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  serverMiddleware: [
+    bodyParser.json(),
+    session({
+      secret: 'super-secret-key',
+      resave: false,
+      saveUninitialized: false,
+      cookie: { maxAge: 60000 }
+    }),
+    // Api middleware (add /api/login & /api/logout routes)
+    '~/api'
+  ]
 }

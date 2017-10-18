@@ -44,6 +44,10 @@
         <h2 class='subtitle'>
           Monitor your SCRUM
         </h2>
+
+        <nuxt-link :to='{ name: "users-login" }' class='button' v-if='!$store.state.authUser'>
+          Login
+        </nuxt-link>
       </div>
     </div>
 
