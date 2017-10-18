@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  // layout: 'sprint'
+  // layout: 'login'
 }
 </script>
