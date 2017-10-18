@@ -14,47 +14,55 @@
       </div>
 
       <div class='hero-body'>
-        <div class='container has-text-centered'>
-          <h1 class='title'>
-            Login
-          </h1>
+        <div class='container'>
+          <div class='has-text-centered'>
+            <h1 class='title'>
+              Login
+            </h1>
 
-          <h2 class='subtitle'>
-            Please login to see the secret content
-          </h2>
-
-          <form v-if='!$store.state.authUser' @submit.prevent='login'>
-            <p class='error' v-if='formError'>{{ formError }}</p>
-
-            <p><i>To login, use <b>demo</b> as username and <b>demo</b> as password.</i></p>
-
-            <div class='field'>
-              <label class='label'>Name</label>
-
-              <div class='control'>
-                <input class='input' type='text' name='username' placeholder='Username' v-model='formUsername'>
-              </div>
-            </div>
-
-            <div class='field'>
-              <label class='label'>Name</label>
-
-              <div class='control'>
-                <input class='input' type='password' name='password' placeholder='Username' v-model='formPassword'>
-              </div>
-            </div>
-
-            <button type='submit' class='button'>Login</button>
-          </form>
-          <div v-else>
-            Hello {{ $store.state.authUser.username }}!
-            <pre>I am the secret content, I am shown only when the use is connected.</pre>
-            <p><i>You can also refresh this page, you'll still be connected!</i></p>
-
-            <button class='button' @click='logout'>Logout</button>
+            <h2 class='subtitle'>
+              Please login to see the secret content
+            </h2>
           </div>
 
-          <p><nuxt-link to='/users/secret'>Super secret page</nuxt-link></p>
+          <div class='columns'>
+            <div class='column is-half is-offset-one-quarter'>
+              <form v-if='!$store.state.authUser' @submit.prevent='login'>
+                <p class='error' v-if='formError'>{{ formError }}</p>
+
+                <p class='has-text-centered'>
+                  <i>To login, use <b>demo</b> as username and <b>demo</b> as password.</i>
+                </p>
+
+                <div class='field'>
+                  <label class='label'>Name</label>
+
+                  <div class='control'>
+                    <input class='input' type='text' name='username' placeholder='Username' v-model='formUsername'>
+                  </div>
+                </div>
+
+                <div class='field'>
+                  <label class='label'>Name</label>
+
+                  <div class='control'>
+                    <input class='input' type='password' name='password' placeholder='Username' v-model='formPassword'>
+                  </div>
+                </div>
+
+                <button type='submit' class='button'>Login</button>
+              </form>
+              <div v-else>
+                Hello {{ $store.state.authUser.username }}!
+                <pre>I am the secret content, I am shown only when the use is connected.</pre>
+                <p><i>You can also refresh this page, you'll still be connected!</i></p>
+
+                <button class='button' @click='logout'>Logout</button>
+              </div>
+
+              <p><nuxt-link to='/users/secret'>Super secret page</nuxt-link></p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
