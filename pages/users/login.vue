@@ -38,7 +38,11 @@
                   <label class='label'>Name</label>
 
                   <div class='control'>
-                    <input class='input' type='text' name='username' placeholder='Username' v-model='formUsername'>
+                    <input type='text'
+                           class='input'
+                           placeholder='Username'
+                           v-model='formUsername'
+                           autofocus>
                   </div>
                 </div>
 
@@ -46,7 +50,10 @@
                   <label class='label'>Name</label>
 
                   <div class='control'>
-                    <input class='input' type='password' name='password' placeholder='Username' v-model='formPassword'>
+                    <input type='password'
+                           class='input'
+                           placeholder='Username'
+                           v-model='formPassword'>
                   </div>
                 </div>
 
@@ -85,9 +92,12 @@ export default {
           username: this.formUsername,
           password: this.formPassword
         })
+
+        this.formError = null
         this.formUsername = ''
         this.formPassword = ''
-        this.formError = null
+
+        this.$router.replace({ name: 'sprints' })
       } catch (e) {
         this.formError = e.message
       }
