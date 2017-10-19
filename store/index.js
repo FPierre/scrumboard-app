@@ -13,6 +13,7 @@ export const getters = {
 export const actions = {
   // Called by Nuxt.js before server-rendering every page
   nuxtServerInit ({ commit, dispatch }, { req }) {
+    console.log('nuxtServerInit')
     if (req.session && req.session.authUser) {
       commit('SET_USER', req.session.authUser)
     }

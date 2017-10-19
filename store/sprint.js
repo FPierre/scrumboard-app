@@ -13,12 +13,24 @@ export const getters = {
 
 export const actions = {
   async all ({ commit }) {
-    await sprints.all(sprints => commit('all', { sprints }))
+    console.log('action sprints all')
+    try {
+      console.log('try')
+
+      await sprints.all(data => {
+        console.log('await action sprints all', data)
+        commit('all', { data })
+      })
+    } catch (e) {
+      console.log('catch')
+      console.log(e)
+    }
   }
 }
 
 export const mutations = {
-  async all (state, { sprints }) {
+  all (state, { sprints }) {
+    // console.log('mutation all', sprints)
     state.all = sprints
     state.current = [...sprints].pop()
   }
