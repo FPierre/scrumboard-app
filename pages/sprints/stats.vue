@@ -16,7 +16,7 @@ export default {
       labels: ['#1', '#2', '#3', '#4', '#5'],
       datasets: [
         {
-          label: 'Effort done',
+          label: 'Points done',
           borderColor: '#ce473f',
           fill: false,
           pointRadius: 0,

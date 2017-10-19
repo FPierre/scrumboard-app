@@ -5,7 +5,7 @@
       <h2 class='subtitle'>Day {{ day }}/{{ days }}</h2>
 
       <div class='field'>
-        <label class='label'>What effort was made yesterday?</label>
+        <label class='label'>How many points were done yesterday?</label>
 
         <div class='control'>
           <input class='input' type='text' placeholder='3, 4, 5, ...' v-model='pointsDone'>
@@ -75,7 +75,7 @@ export default {
           borderColor: '#bbb',
           data: supposedlyDone,
           fill: false,
-          label: 'Effort supposedly done',
+          label: 'Points supposedly done',
           lineTension: 0,
           pointRadius: 0
         },
@@ -83,7 +83,7 @@ export default {
           borderColor: '#ce473f',
           data: actuallyDone,
           fill: false,
-          label: 'Effort actually done',
+          label: 'Points actually done',
           lineTension: 0,
           pointRadius: 0
         }

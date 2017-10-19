@@ -35,7 +35,7 @@
           <div class='columns'>
             <div class='column is-half is-offset-one-quarter'>
               <div class='field'>
-                <label class='label'>How many effort points are estimated?</label>
+                <label class='label'>How many points are planned?</label>
 
                 <div class='control'>
                   <input type='text'
