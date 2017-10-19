@@ -12,12 +12,12 @@ export const getters = {
 
 export const actions = {
   // Called by Nuxt.js before server-rendering every page
-  nuxtServerInit ({ commit, dispatch }, { req }) {
+  async nuxtServerInit ({ commit, dispatch }, { req }) {
     if (req.session && req.session.authUser) {
       commit('SET_USER', req.session.authUser)
     }
 
-    dispatch('sprint/all')
+    await dispatch('sprint/all')
   },
 
   async login ({ commit }, { username, password }) {

@@ -1,4 +1,4 @@
-import sprints from '../api/sprints'
+import sprintsApi from '../api/sprints'
 
 export const state = () => ({
   all: [],
@@ -13,12 +13,13 @@ export const getters = {
 
 export const actions = {
   async all ({ commit }) {
-    await sprints.all(sprints => commit('all', { sprints }))
+    const { sprints } = await sprintsApi.all()
+    commit('all', { sprints })
   }
 }
 
 export const mutations = {
-  async all (state, { sprints }) {
+  all (state, { sprints }) {
     state.all = sprints
     state.current = [...sprints].pop()
   }

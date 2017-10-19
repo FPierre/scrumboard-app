@@ -11,7 +11,7 @@
     "api": "json-server --watch db.json --port 3004",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "precommit": "yarn run lint"
   },
   "dependencies": {
     "@nuxtjs/font-awesome": "^1.0.2",
