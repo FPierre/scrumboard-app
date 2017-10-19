@@ -11,11 +11,13 @@ export const getters = {
 }
 
 export const actions = {
-  // nuxtServerInit is called by Nuxt.js before server-rendering every page
-  nuxtServerInit ({ commit }, { req }) {
+  // Called by Nuxt.js before server-rendering every page
+  nuxtServerInit ({ commit, dispatch }, { req }) {
     if (req.session && req.session.authUser) {
       commit('SET_USER', req.session.authUser)
     }
+
+    dispatch('sprint/all')
   },
 
   async login ({ commit }, { username, password }) {

@@ -33,7 +33,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import { mapGetters } from 'vuex'
 
 export default {
   data () {
@@ -43,6 +43,7 @@ export default {
       showLine: false
     }
   },
+  computed: mapGetters(['sprints/findBy']),
   async asyncData ({ params }) {
     // console.log(params)
 
