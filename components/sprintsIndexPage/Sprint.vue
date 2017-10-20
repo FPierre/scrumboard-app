@@ -3,9 +3,9 @@
     <div class='card'>
       <div class='card-content'>
         <p class='title'>Sprint #{{ sprint.id }}</p>
-        <p class='subtitle'>Sprint #{{ sprint.id }}</p>
+        <p class='subtitle'>Done</p>
 
-        <time datetime='2016-1-1'>11:09 PM - 1 Jan 2016</time>
+        <time :datetime='sprint.start'>{{ sprint.start }}</time>
       </div>
 
       <footer class='card-footer'>
