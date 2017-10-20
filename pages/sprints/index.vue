@@ -5,7 +5,7 @@
 
       <no-ssr>
         <div>
-          <v-touch @swipe='swipe' class='t' v-for='sprint in 10'>
+          <v-touch class='t' @pan='pan' v-for='sprint in 3'>
             Swipe me!
           </v-touch>
         </div>
@@ -26,11 +26,14 @@ export default {
     sprints: state => state.sprint.all
   }),
   methods: {
-    swipe (e) {
-      const m = e.target.style
-      console.log(m)
+    pan (e) {
+      // console.log('pan', e)
 
-      e.target.style.marginLeft = '100px'
+      // const m = e.target
+      // console.log('m.offsetLeft', m.offsetLeft)
+
+      // e.target.style.marginLeft = `${m.offsetLeft + e.deltaX}px`
+      e.target.style.marginLeft = `${e.deltaX}px`
     }
   },
   components: {
