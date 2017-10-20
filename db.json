@@ -2,11 +2,14 @@
   "sprints": [
     {
       "id": 1,
-      "developers": 4,
       "days": 5,
-      "plannedPoints": 50,
-      "unplannedPoints": 8,
-      "done": 48,
+      "developers": 4,
+      "points": {
+        "done": 48,
+        "planned": 50,
+        "unplanned": 8
+      },
+      "start": 1506297600,
       "progress": [
         { "day": 1, "done": 8 },
         { "day": 2, "done": 8 },
@@ -17,11 +20,14 @@
     },
     {
       "id": 2,
-      "developers": 4,
       "days": 5,
-      "plannedPoints": 56,
-      "unplannedPoints": 2,
-      "done": 42,
+      "developers": 4,
+      "points": {
+        "done": 42,
+        "planned": 56,
+        "unplanned": 2
+      },
+      "start": 1506902400,
       "progress": [
         { "day": 1, "done": 10 },
         { "day": 2, "done": 8 },
@@ -32,11 +38,14 @@
     },
     {
       "id": 3,
-      "developers": 4,
       "days": 5,
-      "plannedPoints": 65,
-      "unplannedPoints": 15,
-      "done": 55,
+      "developers": 4,
+      "points": {
+        "done": 55,
+        "planned": 65,
+        "unplanned": 15
+      },
+      "start": 1507507200,
       "progress": [
         { "day": 1, "done": 5 },
         { "day": 2, "done": 15 },
@@ -47,11 +56,14 @@
     },
     {
       "id": 4,
-      "developers": 4,
       "days": 5,
-      "plannedPoints": 45,
-      "unplannedPoints": 0,
-      "done": null,
+      "developers": 4,
+      "points": {
+        "done": null,
+        "planned": 45,
+        "unplanned": 0
+      },
+      "start": 1508112000,
       "progress": [
         { "day": 1, "done": 8 },
         { "day": 2, "done": null },
