@@ -1,3 +1,5 @@
+<!-- <nuxt-link class='button is-success is-outlined' :to='{ name: "sprints-create" }'>Create sprint</nuxt-link> -->
+
 <template>
   <div class='sprints-page'>
     <div class='tabs is-centered'>
@@ -32,7 +34,7 @@
 
             <div class='level-item has-text-centered'>
               <div>
-                <p class='heading'>AVG velocity</p>
+                <p class='heading'>Velocity</p>
                 <p class='title'>{{ velocity }}</p>
               </div>
             </div>
@@ -67,10 +69,6 @@
         </div>
       </no-ssr>
     </div> -->
-
-
-    <nuxt-link :to='{ name: "sprints-create" }'>Create sprint</nuxt-link>
-    <nuxt-link :to='{ name: "sprints-stats" }'>Stats</nuxt-link>
   </div>
 </template>
 

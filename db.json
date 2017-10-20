@@ -1,6 +1,5 @@
 {
   "scrum": {
-    "velocity": 38,
     "points": {
       "planned": 206,
       "unplanned": 25
@@ -17,11 +16,26 @@
         },
         "start": 1506297600,
         "progress": [
-          { "day": 1, "done": 8 },
-          { "day": 2, "done": 8 },
-          { "day": 3, "done": 8 },
-          { "day": 4, "done": 8 },
-          { "day": 5, "done": 8 }
+          {
+            "day": 1,
+            "done": 8
+          },
+          {
+            "day": 2,
+            "done": 8
+          },
+          {
+            "day": 3,
+            "done": 8
+          },
+          {
+            "day": 4,
+            "done": 8
+          },
+          {
+            "day": 5,
+            "done": 8
+          }
         ]
       },
       {
@@ -35,11 +49,26 @@
         },
         "start": 1506902400,
         "progress": [
-          { "day": 1, "done": 10 },
-          { "day": 2, "done": 8 },
-          { "day": 3, "done": 11 },
-          { "day": 4, "done": 3 },
-          { "day": 5, "done": 8 }
+          {
+            "day": 1,
+            "done": 10
+          },
+          {
+            "day": 2,
+            "done": 8
+          },
+          {
+            "day": 3,
+            "done": 11
+          },
+          {
+            "day": 4,
+            "done": 3
+          },
+          {
+            "day": 5,
+            "done": 8
+          }
         ]
       },
       {
@@ -53,11 +82,26 @@
         },
         "start": 1507507200,
         "progress": [
-          { "day": 1, "done": 5 },
-          { "day": 2, "done": 15 },
-          { "day": 3, "done": 5 },
-          { "day": 4, "done": 7 },
-          { "day": 5, "done": 8 }
+          {
+            "day": 1,
+            "done": 5
+          },
+          {
+            "day": 2,
+            "done": 15
+          },
+          {
+            "day": 3,
+            "done": 5
+          },
+          {
+            "day": 4,
+            "done": 7
+          },
+          {
+            "day": 5,
+            "done": 8
+          }
         ]
       },
       {
@@ -71,13 +115,33 @@
         },
         "start": 1508112000,
         "progress": [
-          { "day": 1, "done": 8 },
-          { "day": 2, "done": null },
-          { "day": 3, "done": null },
-          { "day": 4, "done": null },
-          { "day": 5, "done": null }
+          {
+            "day": 1,
+            "done": 8
+          },
+          {
+            "day": 2,
+            "done": null
+          },
+          {
+            "day": 3,
+            "done": null
+          },
+          {
+            "day": 4,
+            "done": null
+          },
+          {
+            "day": 5,
+            "done": null
+          }
         ]
-      }
-    ]
+      },
+      null,
+      null,
+      null,
+      null
+    ],
+    "velocity": 38
   }
 }

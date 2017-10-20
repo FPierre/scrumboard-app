@@ -1,13 +1,16 @@
 import scrumApi from '../api/scrum'
 
 export const state = () => ({
-  // currentSprint: {},
   points: {},
   sprints: [],
   velocity: 0
 })
 
 export const getters = {
+  currentSprint (state) {
+    return [...state.sprints].pop()
+  },
+
   pointsDone (state) {
     return state.sprints.map(s => s.points.done)
   },
@@ -28,13 +31,26 @@ export const getters = {
 export const actions = {
   async all ({ commit }) {
     const { scrum } = await scrumApi.all()
-    commit('all', { scrum })
+
+    commit('updateScrum', { scrum })
+  },
+
+  async createSprint ({ commit, state }, sprint) {
+    commit('appendSprint', sprint)
+
+    const { points, sprints, velocity } = state
+    const { scrum } = await scrumApi.create({ points, sprints, velocity })
+
+    commit('updateScrum', { scrum })
   }
 }
 
 export const mutations = {
-  all (state, { scrum }) {
-    // state.currentSprint = [...scrum.sprints].pop()
+  appendSprint (state, { sprint }) {
+    state.sprints.push(sprint)
+  },
+
+  updateScrum (state, { scrum }) {
     state.points = scrum.points
     state.sprints = scrum.sprints
     state.velocity = scrum.velocity

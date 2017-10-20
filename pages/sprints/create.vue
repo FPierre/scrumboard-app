@@ -82,7 +82,7 @@
               The new sprint #{{ id }} will be composed of {{ developers }} developers who must complete {{ points }} points on {{ days }} days.
             </small>
 
-            <button class='button is-medium is-inline-block is-success'>Create</button>
+            <button class='button is-medium is-inline-block is-success' @click='submit'>Create</button>
           </section>
         </div>
       </div>
@@ -91,27 +91,37 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import { mapActions } from 'vuex'
 import Steps from '~/components/Steps'
 
 export default {
   async asyncData ({ params }) {
-    // let { data } = await axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
-
     return { id: 1 }
   },
   data () {
     return {
+      days: null,
       developers: null,
-      points: null,
-      days: null
+      points: null
     }
   },
   methods: {
+    ...mapActions({
+      createSprint: 'scrum/createSprint'
+    }),
     scrollToInput (elementId) {
       this.$scrollTo(elementId, 500, {
         onDone: () => document.querySelector(`${elementId} input`).focus()
       })
+    },
+    submit () {
+      this.createSprint({
+        days: this.days,
+        developers: this.developers,
+        points: this.points
+      })
+
+      this.$router.replace({ name: 'sprints' })
     }
   },
   components: {
