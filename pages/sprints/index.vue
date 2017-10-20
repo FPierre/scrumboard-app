@@ -2,14 +2,14 @@
   <div class='sprints-page'>
     <div class='tabs is-centered'>
       <ul>
-        <li class='is-active'><a @click='currentTab = "sprints"'>Sprints</a></li>
-        <li><a @click='currentTab = "stats"'>Stats</a></li>
+        <li :class='{ "is-active": isSprints }'><a @click='currentTab = "sprints"'>Sprints</a></li>
+        <li :class='{ "is-active": isStats }'><a @click='currentTab = "stats"'>Stats</a></li>
       </ul>
     </div>
 
     <div class='container'>
       <div class='tabs-content'>
-        <template v-if='currentTab === "sprints"'>
+        <template v-if='isSprints'>
           <div class='sprints-wrapper'>
             <no-ssr>
               <div>
@@ -21,8 +21,8 @@
           </div>
         </template>
 
-        <template v-else-if='currentTab === "stats"'>
-          <burndown-chart v-if='showLine' :data='burndownData' :options='options'/>
+        <template v-else-if='isStats'>
+          <velocity-chart v-if='showLine' :data='{}' :options='{}'/>
         </template>
       </div>
     </div>
@@ -50,12 +50,25 @@ export default {
   data () {
     return {
       currentTab: 'sprints',
-      touchedSprintHtml: null
+      touchedSprintHtml: null,
+      showLine: false
     }
   },
-  computed: mapState({
-    sprints: state => state.sprint.all
-  }),
+  computed: {
+    ...mapState({
+      sprints: state => state.sprint.all
+    }),
+    isSprints () {
+      return this.currentTab === 'sprints'
+    },
+    isStats () {
+      return this.currentTab === 'stats'
+    }
+  },
+  mounted () {
+    // showLine will only be set to true on the client. This keeps the DOM-tree in sync.
+    this.showLine = true
+  },
   methods: {
     pan (e) {
       console.log('pan')
