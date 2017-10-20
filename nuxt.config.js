@@ -23,14 +23,16 @@ module.exports = {
   ],
   plugins: [
     { src: '~plugins/vue-chartjs', ssr: false },
-    { src: '~plugins/vue-scrollto' }
+    { src: '~plugins/vue-scrollto' },
+    { src: '~plugins/vue-touch', ssr: false }
   ],
   build: {
     vendor: [
       'axios',
       'chart.js',
       'vue-chartjs',
-      'vue-scrollto'
+      'vue-scrollto',
+      'vue-touch'
     ],
     extend (config, ctx) {
       if (ctx.dev && ctx.isClient) {
