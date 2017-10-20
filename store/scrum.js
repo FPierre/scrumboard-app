@@ -12,6 +12,14 @@ export const getters = {
     return state.sprints.map(s => s.points.done)
   },
 
+  plannedPoints (state) {
+    return state.points.planned
+  },
+
+  unplannedPoints (state) {
+    return state.points.unplanned
+  },
+
   findBy (state, { id }) {
     return state.sprints.find(s => s.id === id)
   }

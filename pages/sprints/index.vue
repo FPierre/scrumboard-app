@@ -21,8 +21,9 @@
           </div>
         </template>
 
-        <template v-else-if='isStats'>
-          <velocity-chart v-if='showLine' :data='velocityData' :options='velocityOptions'/>
+        <template v-else-if='isStats && showLine'>
+          <velocity-chart :data='velocityData' :options='velocityOptions'/>
+          <points-distribution-chart :data='pointsDistributionData' :options='pointsDistributionOptions'/>
         </template>
       </div>
     </div>
@@ -59,7 +60,9 @@ export default {
       sprints: state => state.scrum.sprints
     }),
     ...mapGetters({
-      pointsDone: 'scrum/pointsDone'
+      pointsDone: 'scrum/pointsDone',
+      plannedPoints: 'scrum/plannedPoints',
+      unplannedPoints: 'scrum/unplannedPoints'
     }),
     velocityData () {
       return {
@@ -77,6 +80,23 @@ export default {
       }
     },
     velocityOptions () {
+      return {
+        maintainAspectRatio: false,
+        responsive: true
+      }
+    },
+    pointsDistributionData () {
+      return {
+        labels: ['Planned', 'Unplanned'],
+        datasets: [
+          {
+            // borderColor: '#bbb',
+            data: [this.plannedPoints, this.unplannedPoints]
+          }
+        ]
+      }
+    },
+    pointsDistributionOptions () {
       return {
         maintainAspectRatio: false,
         responsive: true
