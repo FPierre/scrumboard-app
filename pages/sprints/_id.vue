@@ -9,7 +9,7 @@
 
     <div class='container'>
       <div class='tabs-content'>
-        <template  v-if='currentTab === "sprint"'>
+        <template v-if='currentTab === "sprint"'>
           <h1 class='title'>Sprint #{{ id }}</h1>
           <h2 class='subtitle'>Day {{ day }}/{{ days }}</h2>
 
@@ -24,7 +24,7 @@
           <button class='button is-medium is-success'>Save</button>
         </template>
 
-        <template  v-else-if='currentTab === "stats"'>
+        <template v-else-if='currentTab === "stats"'>
           <burndown-chart v-if='showLine' :data='burndownData' :options='options'/>
         </template>
       </div>
