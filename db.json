@@ -19,6 +19,36 @@
       "id": 2,
       "developers": 4,
       "days": 5,
+      "plannedPoints": 56,
+      "unplannedPoints": 2,
+      "done": 42,
+      "progress": [
+        { "day": 1, "done": 10 },
+        { "day": 2, "done": 8 },
+        { "day": 3, "done": 11 },
+        { "day": 4, "done": 3 },
+        { "day": 5, "done": 8 }
+      ]
+    },
+    {
+      "id": 3,
+      "developers": 4,
+      "days": 5,
+      "plannedPoints": 65,
+      "unplannedPoints": 15,
+      "done": 55,
+      "progress": [
+        { "day": 1, "done": 5 },
+        { "day": 2, "done": 15 },
+        { "day": 3, "done": 5 },
+        { "day": 4, "done": 7 },
+        { "day": 5, "done": 8 }
+      ]
+    },
+    {
+      "id": 4,
+      "developers": 4,
+      "days": 5,
       "plannedPoints": 45,
       "unplannedPoints": 0,
       "done": null,
