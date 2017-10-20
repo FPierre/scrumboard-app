@@ -22,7 +22,7 @@
         </template>
 
         <template v-else-if='isStats'>
-          <velocity-chart v-if='showLine' :data='{}' :options='{}'/>
+          <velocity-chart v-if='showLine' :data='velocityData' :options='velocityOptions'/>
         </template>
       </div>
     </div>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import Sprint from '~/components/sprintsIndexPage/Sprint'
 
 export default {
@@ -56,8 +56,32 @@ export default {
   },
   computed: {
     ...mapState({
-      sprints: state => state.sprint.all
+      sprints: state => state.scrum.sprints
     }),
+    ...mapGetters({
+      pointsDone: 'scrum/pointsDone'
+    }),
+    velocityData () {
+      return {
+        labels: this.pointsDone.map((p, i) => i + 1),
+        datasets: [
+          {
+            borderColor: '#bbb',
+            data: this.pointsDone,
+            fill: false,
+            label: 'Velocity',
+            lineTension: 0,
+            pointRadius: 0
+          }
+        ]
+      }
+    },
+    velocityOptions () {
+      return {
+        maintainAspectRatio: false,
+        responsive: true
+      }
+    },
     isSprints () {
       return this.currentTab === 'sprints'
     },
@@ -71,8 +95,6 @@ export default {
   },
   methods: {
     pan (e) {
-      console.log('pan')
-
       const sprintsWrapperHtml = e.target.closest('.sprints-wrapper')
 
       if (sprintsWrapperHtml) {

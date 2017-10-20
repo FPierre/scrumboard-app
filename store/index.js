@@ -17,7 +17,7 @@ export const actions = {
       commit('SET_USER', req.session.authUser)
     }
 
-    await dispatch('sprint/all')
+    await dispatch('scrum/all')
   },
 
   async login ({ commit }, { username, password }) {
