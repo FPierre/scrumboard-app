@@ -22,6 +22,36 @@
         </template>
 
         <template v-else-if='isStats && showLine'>
+          <nav class='level'>
+            <div class='level-item has-text-centered'>
+              <div>
+                <p class='heading'>Sprints</p>
+                <p class='title'>{{ sprints.length }}</p>
+              </div>
+            </div>
+
+            <div class='level-item has-text-centered'>
+              <div>
+                <p class='heading'>AVG velocity</p>
+                <p class='title'>{{ velocity }}</p>
+              </div>
+            </div>
+
+            <div class='level-item has-text-centered'>
+              <div>
+                <p class='heading'>Followers</p>
+                <p class='title'>456K</p>
+              </div>
+            </div>
+
+            <div class='level-item has-text-centered'>
+              <div>
+                <p class='heading'>Likes</p>
+                <p class='title'>789</p>
+              </div>
+            </div>
+          </nav>
+
           <velocity-chart :data='velocityData' :options='velocityOptions'/>
           <points-distribution-chart :data='pointsDistributionData' :options='pointsDistributionOptions'/>
         </template>
@@ -37,6 +67,7 @@
         </div>
       </no-ssr>
     </div> -->
+
 
     <nuxt-link :to='{ name: "sprints-create" }'>Create sprint</nuxt-link>
     <nuxt-link :to='{ name: "sprints-stats" }'>Stats</nuxt-link>
@@ -57,7 +88,8 @@ export default {
   },
   computed: {
     ...mapState({
-      sprints: state => state.scrum.sprints
+      sprints: state => state.scrum.sprints,
+      velocity: state => state.scrum.velocity
     }),
     ...mapGetters({
       pointsDone: 'scrum/pointsDone',
