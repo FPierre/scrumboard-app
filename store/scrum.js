@@ -2,7 +2,8 @@ import scrumApi from '../api/scrum'
 
 export const state = () => ({
   points: {},
-  sprints: []
+  sprints: [],
+  currentSprintId: 1
 })
 
 export const getters = {
@@ -10,8 +11,24 @@ export const getters = {
     return Math.round(getters.pointsDone / state.sprints.length)
   },
 
-  currentSprint (state) {
+  inProgressSprint (state) {
     return [...state.sprints].pop()
+  },
+
+  currentSprint (state) {
+    if (state.currentSprintId) {
+      return state.sprints.find(sprint => sprint.id === state.currentSprintId)
+    } else {
+      return null
+    }
+  },
+
+  inProgressIsCurrentSprint (state) {
+    if (state.currentSprint) {
+      return state.currentSprintId === state.inProgressSprint.id
+    } else {
+      return null
+    }
   },
 
   newSprintId (state, getters) {
@@ -34,10 +51,6 @@ export const getters = {
 
   unplannedPoints (state) {
     return state.points.unplanned
-  },
-
-  findBy (state, { id }) {
-    return state.sprints.find(s => s.id === id)
   }
 }
 
@@ -48,9 +61,13 @@ export const actions = {
     commit('updateScrum', { scrum })
   },
 
+  setCurrentSprintId ({ commit }, id) {
+    commit('setCurrentSprintId', id)
+  },
+
   async createSprint ({ commit, state }, newSprint) {
     newSprint['days'] = parseInt(newSprint.days)
-    newSprint['developers'] = parseInt(newSprint.developers)
+    newSprint['currentSprintIddevelopers'] = parseInt(newSprint.developers)
     newSprint['scrumId'] = parseInt(1)
     newSprint['points'] = {
       planned: parseInt(newSprint.points),
@@ -76,6 +93,10 @@ export const actions = {
 }
 
 export const mutations = {
+  setCurrentSprintId (state, id) {
+    state.currentSprintId = id
+  },
+
   appendSprint (state, sprint) {
     state.sprints.push(sprint)
   },

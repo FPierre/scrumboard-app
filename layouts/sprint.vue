@@ -10,12 +10,9 @@
 import AppNavbar from '@/components/sprintsPage/AppNavbar'
 
 export default {
-  middleware: 'auth',
+  // middleware: 'auth',
   components: {
     AppNavbar
   }
 }
 </script>
-
-<style>
-</style>
