@@ -117,7 +117,7 @@
       "days": 5,
       "developers": 4,
       "points": {
-        "done": 0,
+        "done": 8,
         "planned": 45,
         "unplanned": 0
       },
@@ -144,74 +144,6 @@
           "done": 0
         }
       ]
-    },
-    {
-      "days": 5,
-      "developers": 4,
-      "points": {
-        "planned": 55,
-        "unplanned": 0,
-        "done": 0
-      },
-      "scrumId": 1,
-      "start": 1508669479936,
-      "progress": [
-        {
-          "day": 1,
-          "done": 0
-        },
-        {
-          "day": 2,
-          "done": 0
-        },
-        {
-          "day": 3,
-          "done": 0
-        },
-        {
-          "day": 4,
-          "done": 0
-        },
-        {
-          "day": 5,
-          "done": 0
-        }
-      ],
-      "id": 5
-    },
-    {
-      "days": 5,
-      "developers": 4,
-      "points": {
-        "planned": 45,
-        "unplanned": 0,
-        "done": 0
-      },
-      "scrumId": 1,
-      "start": 1508669691663,
-      "progress": [
-        {
-          "day": 1,
-          "done": 0
-        },
-        {
-          "day": 2,
-          "done": 0
-        },
-        {
-          "day": 3,
-          "done": 0
-        },
-        {
-          "day": 4,
-          "done": 0
-        },
-        {
-          "day": 5,
-          "done": 0
-        }
-      ],
-      "id": 6
     }
   ]
 }

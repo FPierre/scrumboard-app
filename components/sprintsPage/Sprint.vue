@@ -3,9 +3,9 @@
     <div class='card'>
       <div class='card-content'>
         <p class='title'>Sprint #{{ sprint.id }}</p>
-        <p class='subtitle'>Done</p>
+        <p class='subtitle has-text-weight-semibold' v-if='isCurrent'>Current</p>
+        <p class='subtitle' v-else>Done</p>
 
-        <!-- <time :datetime='sprint.start'>{{ sprint.start }}</time> -->
         <timeago :since='sprint.start' :max-time='1440 * 365' :format='formatTime'></timeago>
       </div>
 
@@ -19,8 +19,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: ['sprint'],
+  computed: {
+    ...mapGetters({
+      currentSprint: 'scrum/currentSprint'
+    }),
+    isCurrent () {
+      return this.currentSprint.id === this.sprint.id
+    }
+  },
   methods: {
     formatTime (time) {
       const date = new Date(time)
