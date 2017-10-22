@@ -1,5 +1,3 @@
-<!-- <nuxt-link class='button is-success is-outlined' :to='{ name: "sprints-create" }'>Create sprint</nuxt-link> -->
-
 <template>
   <div class='sprints-page'>
     <div class='tabs is-centered'>
@@ -60,8 +58,6 @@
       </div>
     </div>
 
-    <nuxt-link class='button is-success is-outlined' :to='{ name: "sprints-create" }'>+</nuxt-link>
-
     <!-- <div class='test'>
       <no-ssr>
         <div>
@@ -76,7 +72,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import Sprint from '~/components/sprintsIndexPage/Sprint'
+import Sprint from '~/components/sprintsPage/Sprint'
 
 export default {
   data () {

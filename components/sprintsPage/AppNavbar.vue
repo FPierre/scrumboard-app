@@ -8,6 +8,16 @@
           </span>
         </nuxt-link>
       </div>
+
+      <div class='navbar-menu is-active'>
+        <div class='navbar-end'>
+          <div class='navbar-item'>
+            <nuxt-link :to='{ name: "sprints-create" }' class='button is-primary'>
+              Create
+            </nuxt-link>
+          </div>
+        </div>
+      </div>
     </nav>
   </div>
 </template>

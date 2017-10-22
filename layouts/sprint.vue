@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import AppNavbar from '@/components/AppNavbar'
+import AppNavbar from '@/components/sprintsPage/AppNavbar'
 
 export default {
   components: {
