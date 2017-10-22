@@ -79,6 +79,5 @@ export const mutations = {
   updateScrum (state, { scrum }) {
     state.points = scrum.points
     state.sprints = scrum.sprints
-    // state.velocity = scrum.velocity
   }
 }
