@@ -67,7 +67,8 @@
                   <input type='text'
                          class='input'
                          placeholder='5, 10, 20, ...'
-                         v-model='days'>
+                         v-model='days'
+                         @keyup.enter.stop='focusButton'>
                 </div>
               </div>
             </div>
@@ -82,7 +83,7 @@
               The new sprint #{{ newSprintId }} will be composed of {{ developers }} developers who must complete {{ points }} points on {{ days }} days.
             </small>
 
-            <button class='button is-medium is-inline-block is-success' @click='submit'>Create</button>
+            <button id='submit-button' class='button is-medium is-inline-block is-success' @click='submit'>Create</button>
           </section>
         </div>
       </div>
@@ -113,6 +114,9 @@ export default {
       this.$scrollTo(elementId, 500, {
         onDone: () => document.querySelector(`${elementId} input`).focus()
       })
+    },
+    focusButton () {
+      document.querySelector('#submit-button').focus()
     },
     submit () {
       this.createSprint({
