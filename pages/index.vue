@@ -30,12 +30,13 @@ export default {
     }
   },
   computed: mapGetters(['isAuth']),
+  created () {
+    if (this.isAuth) {
+      this.$router.replace({ name: 'sprints' })
+    }
+  },
   components: {
     Login
   }
 }
 </script>
-
-<!--
-<nuxt-link :to='{ name: "sprints-id", params: { id: 1 } }'>Sprint 1</nuxt-link>
--->
