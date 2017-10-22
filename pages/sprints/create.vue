@@ -79,7 +79,7 @@
 
           <section class='section'>
             <small class='is-block'>
-              The new sprint #{{ id }} will be composed of {{ developers }} developers who must complete {{ points }} points on {{ days }} days.
+              The new sprint #{{ newSprintId }} will be composed of {{ developers }} developers who must complete {{ points }} points on {{ days }} days.
             </small>
 
             <button class='button is-medium is-inline-block is-success' @click='submit'>Create</button>
@@ -91,20 +91,20 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import Steps from '~/components/Steps'
 
 export default {
-  async asyncData ({ params }) {
-    return { id: 1 }
-  },
   data () {
     return {
-      days: null,
-      developers: null,
-      points: null
+      days: 0,
+      developers: 0,
+      points: 0
     }
   },
+  computed: mapGetters({
+    newSprintId: 'scrum/newSprintId'
+  }),
   methods: {
     ...mapActions({
       createSprint: 'scrum/createSprint'

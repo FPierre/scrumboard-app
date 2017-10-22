@@ -14,6 +14,10 @@ export const getters = {
     return [...state.sprints].pop()
   },
 
+  newSprintId (state, getters) {
+    return getters.currentSprint.id
+  },
+
   pointsDone (state) {
     return state.sprints.reduce((memo, sprint) => {
       return memo + sprint.points.done
@@ -77,6 +81,7 @@ export const mutations = {
   },
 
   updateScrum (state, { scrum }) {
+    state.id = scrum.id
     state.points = scrum.points
     state.sprints = scrum.sprints
   }
