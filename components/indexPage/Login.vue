@@ -68,13 +68,6 @@ export default {
       } catch (e) {
         this.error = e.message
       }
-    },
-    async logout () {
-      try {
-        await this.$store.dispatch('logout')
-      } catch (e) {
-        this.error = e.message
-      }
     }
   }
 }
