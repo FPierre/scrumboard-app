@@ -80,7 +80,7 @@
 
           <section class='section'>
             <small class='is-block'>
-              The new sprint #{{ newSprintId }} will be composed of {{ developers }} developers who must complete {{ points }} points on {{ days }} days.
+              The new sprint <strong>#{{ newSprintId }}</strong> will be composed of <strong>{{ developers }}</strong> developers who must complete <strong>{{ points }}</strong> points on <strong>{{ days }}</strong> days.
             </small>
 
             <button id='submit-button' class='button is-medium is-inline-block is-success' @click='submit'>Create</button>
