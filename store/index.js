@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+const nuxtApi = axios.create({
+  baseURL: 'http://localhost:3000/api/'
+})
+
 export const state = () => ({
   authUser: null
 })
@@ -22,7 +26,7 @@ export const actions = {
 
   async login ({ commit }, { username, password }) {
     try {
-      const { data } = await axios.post('/api/login', { username, password })
+      const { data } = await nuxtApi.post('login', { username, password })
       commit('SET_USER', data)
     } catch (error) {
       if (error.response && error.response.status === 401) {
@@ -34,13 +38,13 @@ export const actions = {
   },
 
   async logout ({ commit }) {
-    await axios.post('/api/logout')
+    await nuxtApi.post('logout')
     commit('SET_USER', null)
   }
 }
 
 export const mutations = {
-  SET_USER: function (state, user) {
+  SET_USER: (state, user) => {
     state.authUser = user
   }
 }

@@ -10,9 +10,10 @@
           Monitor your SCRUM
         </h2>
 
-        <nuxt-link :to='{ name: "users-login" }' class='button' v-if='!isAuth'>
-          Login
-        </nuxt-link>
+        <template v-if='!isAuth'>
+          <button class='button' @click='displayLogin = true' v-if='!displayLogin'>Login</button>
+          <login v-if='displayLogin' />
+        </template>
       </div>
     </div>
   </section>
@@ -20,9 +21,18 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Login from '~/components/indexPage/Login'
 
 export default {
-  computed: mapGetters(['isAuth'])
+  data () {
+    return {
+      displayLogin: false
+    }
+  },
+  computed: mapGetters(['isAuth']),
+  components: {
+    Login
+  }
 }
 </script>
 
