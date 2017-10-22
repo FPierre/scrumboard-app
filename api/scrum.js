@@ -1,15 +1,17 @@
 import axios from 'axios'
 
+axios.defaults.baseURL = 'http://localhost:3004/'
+
 export default {
   async all () {
-    const { data } = await axios.get('http://localhost:3004/scrum')
+    const { data } = await axios.get('scrums/1?_embed=sprints')
 
     return { scrum: data }
   },
 
-  async create (scrum) {
-    const { data } = await axios.put('http://localhost:3004/scrum', scrum)
+  async create (newSprint) {
+    const { data } = await axios.post('scrums/1/sprints', newSprint)
 
-    return { scrum: data }
+    return { sprint: data }
   }
 }

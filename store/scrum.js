@@ -24,7 +24,7 @@ export const getters = {
   },
 
   findBy (state, { id }) {
-    return state.sprints.find(s => s.id === id)
+    // return state.sprints.find(s => s.id === id)
   }
 }
 
@@ -35,18 +35,36 @@ export const actions = {
     commit('updateScrum', { scrum })
   },
 
-  async createSprint ({ commit, state }, sprint) {
+  async createSprint ({ commit, state }, newSprint) {
+    newSprint['days'] = parseInt(newSprint.days)
+    newSprint['developers'] = parseInt(newSprint.developers)
+    newSprint['scrumId'] = parseInt(1)
+    newSprint['points'] = {
+      planned: parseInt(newSprint.points),
+      unplanned: 0,
+      done: 0
+    }
+
+    // Only get hours and minutes
+    newSprint['start'] = new Date().getTime()
+
+    let progress = []
+
+    for (let i = 1; i < parseInt(newSprint.days) + 1; i++) {
+      progress.push({ day: parseInt(i), done: parseInt(0) })
+    }
+
+    newSprint['progress'] = progress
+
+    const { sprint } = await scrumApi.create(newSprint)
+
     commit('appendSprint', sprint)
-
-    const { points, sprints, velocity } = state
-    const { scrum } = await scrumApi.create({ points, sprints, velocity })
-
-    commit('updateScrum', { scrum })
+    // commit('updateScrum', { scrum })
   }
 }
 
 export const mutations = {
-  appendSprint (state, { sprint }) {
+  appendSprint (state, sprint) {
     state.sprints.push(sprint)
   },
 

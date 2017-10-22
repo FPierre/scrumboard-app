@@ -60,6 +60,8 @@
       </div>
     </div>
 
+    <nuxt-link class='button is-success is-outlined' :to='{ name: "sprints-create" }'>+</nuxt-link>
+
     <!-- <div class='test'>
       <no-ssr>
         <div>

@@ -1,147 +1,218 @@
 {
-  "scrum": {
-    "points": {
-      "planned": 206,
-      "unplanned": 25
+  "scrums": [
+    {
+      "id": 1,
+      "points": {
+        "planned": 206,
+        "unplanned": 25
+      },
+      "velocity": 38
+    }
+  ],
+  "sprints": [
+    {
+      "id": 1,
+      "scrumId": 1,
+      "days": 5,
+      "developers": 4,
+      "points": {
+        "done": 48,
+        "planned": 50,
+        "unplanned": 8
+      },
+      "start": 1506297600,
+      "progress": [
+        {
+          "day": 1,
+          "done": 8
+        },
+        {
+          "day": 2,
+          "done": 8
+        },
+        {
+          "day": 3,
+          "done": 8
+        },
+        {
+          "day": 4,
+          "done": 8
+        },
+        {
+          "day": 5,
+          "done": 8
+        }
+      ]
     },
-    "sprints": [
-      {
-        "id": 1,
-        "days": 5,
-        "developers": 4,
-        "points": {
-          "done": 48,
-          "planned": 50,
-          "unplanned": 8
-        },
-        "start": 1506297600,
-        "progress": [
-          {
-            "day": 1,
-            "done": 8
-          },
-          {
-            "day": 2,
-            "done": 8
-          },
-          {
-            "day": 3,
-            "done": 8
-          },
-          {
-            "day": 4,
-            "done": 8
-          },
-          {
-            "day": 5,
-            "done": 8
-          }
-        ]
+    {
+      "id": 2,
+      "scrumId": 1,
+      "days": 5,
+      "developers": 4,
+      "points": {
+        "done": 42,
+        "planned": 56,
+        "unplanned": 2
       },
-      {
-        "id": 2,
-        "days": 5,
-        "developers": 4,
-        "points": {
-          "done": 42,
-          "planned": 56,
-          "unplanned": 2
+      "start": 1506902400,
+      "progress": [
+        {
+          "day": 1,
+          "done": 10
         },
-        "start": 1506902400,
-        "progress": [
-          {
-            "day": 1,
-            "done": 10
-          },
-          {
-            "day": 2,
-            "done": 8
-          },
-          {
-            "day": 3,
-            "done": 11
-          },
-          {
-            "day": 4,
-            "done": 3
-          },
-          {
-            "day": 5,
-            "done": 8
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "days": 5,
-        "developers": 4,
-        "points": {
-          "done": 55,
-          "planned": 65,
-          "unplanned": 15
+        {
+          "day": 2,
+          "done": 8
         },
-        "start": 1507507200,
-        "progress": [
-          {
-            "day": 1,
-            "done": 5
-          },
-          {
-            "day": 2,
-            "done": 15
-          },
-          {
-            "day": 3,
-            "done": 5
-          },
-          {
-            "day": 4,
-            "done": 7
-          },
-          {
-            "day": 5,
-            "done": 8
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "days": 5,
-        "developers": 4,
-        "points": {
-          "done": null,
-          "planned": 45,
-          "unplanned": 0
+        {
+          "day": 3,
+          "done": 11
         },
-        "start": 1508112000,
-        "progress": [
-          {
-            "day": 1,
-            "done": 8
-          },
-          {
-            "day": 2,
-            "done": null
-          },
-          {
-            "day": 3,
-            "done": null
-          },
-          {
-            "day": 4,
-            "done": null
-          },
-          {
-            "day": 5,
-            "done": null
-          }
-        ]
+        {
+          "day": 4,
+          "done": 3
+        },
+        {
+          "day": 5,
+          "done": 8
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "scrumId": 1,
+      "days": 5,
+      "developers": 4,
+      "points": {
+        "done": 55,
+        "planned": 65,
+        "unplanned": 15
       },
-      null,
-      null,
-      null,
-      null
-    ],
-    "velocity": 38
-  }
+      "start": 1507507200,
+      "progress": [
+        {
+          "day": 1,
+          "done": 5
+        },
+        {
+          "day": 2,
+          "done": 15
+        },
+        {
+          "day": 3,
+          "done": 5
+        },
+        {
+          "day": 4,
+          "done": 7
+        },
+        {
+          "day": 5,
+          "done": 8
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "scrumId": 1,
+      "days": 5,
+      "developers": 4,
+      "points": {
+        "done": 0,
+        "planned": 45,
+        "unplanned": 0
+      },
+      "start": 1508112000,
+      "progress": [
+        {
+          "day": 1,
+          "done": 8
+        },
+        {
+          "day": 2,
+          "done": 0
+        },
+        {
+          "day": 3,
+          "done": 0
+        },
+        {
+          "day": 4,
+          "done": 0
+        },
+        {
+          "day": 5,
+          "done": 0
+        }
+      ]
+    },
+    {
+      "days": 5,
+      "developers": 4,
+      "points": {
+        "planned": 55,
+        "unplanned": 0,
+        "done": 0
+      },
+      "scrumId": 1,
+      "start": 1508669479936,
+      "progress": [
+        {
+          "day": 1,
+          "done": 0
+        },
+        {
+          "day": 2,
+          "done": 0
+        },
+        {
+          "day": 3,
+          "done": 0
+        },
+        {
+          "day": 4,
+          "done": 0
+        },
+        {
+          "day": 5,
+          "done": 0
+        }
+      ],
+      "id": 5
+    },
+    {
+      "days": 5,
+      "developers": 4,
+      "points": {
+        "planned": 45,
+        "unplanned": 0,
+        "done": 0
+      },
+      "scrumId": 1,
+      "start": 1508669691663,
+      "progress": [
+        {
+          "day": 1,
+          "done": 0
+        },
+        {
+          "day": 2,
+          "done": 0
+        },
+        {
+          "day": 3,
+          "done": 0
+        },
+        {
+          "day": 4,
+          "done": 0
+        },
+        {
+          "day": 5,
+          "done": 0
+        }
+      ],
+      "id": 6
+    }
+  ]
 }
