@@ -25,6 +25,7 @@
     "nuxt": "^1.0.0-rc11",
     "vue-chartjs": "^3.0.0",
     "vue-scrollto": "^2.7.8",
+    "vue-timeago": "^3.3.6",
     "vue-touch": "^2.0.0-beta.4"
   },
   "devDependencies": {

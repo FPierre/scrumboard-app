@@ -24,6 +24,7 @@ module.exports = {
   plugins: [
     { src: '~plugins/vue-chartjs', ssr: false },
     { src: '~plugins/vue-scrollto' },
+    { src: '~plugins/vue-timeago' },
     { src: '~plugins/vue-touch', ssr: false }
   ],
   build: {
@@ -32,6 +33,7 @@ module.exports = {
       'chart.js',
       'vue-chartjs',
       'vue-scrollto',
+      'vue-timeago',
       'vue-touch'
     ],
     extend (config, ctx) {

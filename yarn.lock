@@ -6112,6 +6112,10 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
+vue-timeago@^3.3.6:
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/vue-timeago/-/vue-timeago-3.3.6.tgz#c849042ddaf159f24c80ac317211a0d4b427e5fc"
+
 vue-touch@^2.0.0-beta.4:
   version "2.0.0-beta.4"
   resolved "https://registry.yarnpkg.com/vue-touch/-/vue-touch-2.0.0-beta.4.tgz#0259a5fbf89fed12d5e5d789fffb99b874ae0501"
