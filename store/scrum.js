@@ -2,16 +2,25 @@ import scrumApi from '../api/scrum'
 
 export const state = () => ({
   points: {},
-  sprints: [],
-  velocity: 0
+  sprints: []
 })
 
 export const getters = {
+  velocity (state, getters) {
+    return Math.round(getters.pointsDone / state.sprints.length)
+  },
+
   currentSprint (state) {
     return [...state.sprints].pop()
   },
 
   pointsDone (state) {
+    return state.sprints.reduce((memo, sprint) => {
+      return memo + sprint.points.done
+    }, 0)
+  },
+
+  pointsDoneArray (state) {
     return state.sprints.map(s => s.points.done)
   },
 
@@ -24,7 +33,7 @@ export const getters = {
   },
 
   findBy (state, { id }) {
-    // return state.sprints.find(s => s.id === id)
+    return state.sprints.find(s => s.id === id)
   }
 }
 
@@ -59,7 +68,6 @@ export const actions = {
     const { sprint } = await scrumApi.create(newSprint)
 
     commit('appendSprint', sprint)
-    // commit('updateScrum', { scrum })
   }
 }
 
@@ -71,6 +79,6 @@ export const mutations = {
   updateScrum (state, { scrum }) {
     state.points = scrum.points
     state.sprints = scrum.sprints
-    state.velocity = scrum.velocity
+    // state.velocity = scrum.velocity
   }
 }

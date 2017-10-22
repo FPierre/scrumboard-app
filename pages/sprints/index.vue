@@ -92,17 +92,18 @@ export default {
       velocity: state => state.scrum.velocity
     }),
     ...mapGetters({
-      pointsDone: 'scrum/pointsDone',
+      pointsDoneArray: 'scrum/pointsDoneArray',
       plannedPoints: 'scrum/plannedPoints',
-      unplannedPoints: 'scrum/unplannedPoints'
+      unplannedPoints: 'scrum/unplannedPoints',
+      velocity: 'scrum/velocity'
     }),
     velocityData () {
       return {
-        labels: this.pointsDone.map((p, i) => i + 1),
+        labels: this.pointsDoneArray.map((p, i) => i + 1),
         datasets: [
           {
             borderColor: '#bbb',
-            data: this.pointsDone,
+            data: this.pointsDoneArray,
             fill: false,
             label: 'Velocity',
             lineTension: 0,
