@@ -1,64 +1,68 @@
 import scrumApi from '../api/scrum'
 
 export const state = () => ({
-  sprints: [],
-  selectedSprintId: null
+  all: [],
+  selectedId: null
 })
 
 export const getters = {
-  currentSprint (state) {
-    return [...state.sprints].pop()
+  current (state) {
+    return [...state.all].pop()
   },
 
   currentDay (state, getters) {
-    return getters.currentSprint.progress.find(progress => !progress.done).day
+    return getters.current.progress.find(progress => !progress.done).day
   },
 
-  selectedSprint (state) {
-    if (!state.selectedSprintId) {
+  selected (state) {
+    if (!state.selectedId) {
       return null
     }
 
-    return state.sprints.find(sprint => sprint.id === state.selectedSprintId)
+    return state.all.find(sprint => sprint.id === state.selectedId)
   },
 
   selectedIsCurrentSprint (state, getters) {
-    if (!state.selectedSprintId) {
+    if (!state.selectedId) {
       return null
     }
 
-    return state.selectedSprintId === getters.currentSprint.id
+    return state.selectedId === getters.current.id
   },
 
   newSprintId (state, getters) {
-    return getters.currentSprint.id + 1
+    return getters.current.id + 1
   },
 
   pointsDone (state) {
-    return state.sprints.reduce((memo, sprint) => {
+    return state.all.reduce((memo, sprint) => {
       return memo + sprint.points.done
     }, 0)
   },
 
   pointsDoneArray (state) {
-    return state.sprints.map(sprint => sprint.points.done)
+    return state.all.map(sprint => sprint.points.done)
   }
 }
 
 export const actions = {
   async all ({ commit }) {
     const { scrum } = await scrumApi.all()
+    const { sprints } = scrum
+
+    delete scrum.sprints
 
     commit('updateScrum', { scrum })
+    commit('updateSprints', { sprints })
   },
 
-  setCurrentSprintId ({ commit }, id) {
-    commit('setCurrentSprintId', id)
+  setCurrentId ({ commit }, id) {
+    commit('setCurrentId', id)
   },
 
-  async createSprint ({ commit, state }, newSprint) {
+  async create ({ commit, state }, newSprint) {
     newSprint['days'] = parseInt(newSprint.days)
-    newSprint['selectedSprintIddevelopers'] = parseInt(newSprint.developers)
+    newSprint['selectedIddevelopers'] = parseInt(newSprint.developers)
     newSprint['scrumId'] = parseInt(1)
     newSprint['points'] = {
       planned: parseInt(newSprint.points),
@@ -72,29 +76,35 @@ export const actions = {
     let progress = []
 
     for (let i = 1; i < parseInt(newSprint.days) + 1; i++) {
-      progress.push({ day: parseInt(i), done: parseInt(0) })
+      progress.push({
+        day: parseInt(i),
+        done: parseInt(0)
+      })
     }
 
     newSprint['progress'] = progress
 
     const { sprint } = await scrumApi.create(newSprint)
 
-    commit('appendSprint', sprint)
+    commit('append', sprint)
   }
 }
 
 export const mutations = {
-  setCurrentSprintId (state, id) {
-    state.selectedSprintId = id
+  setCurrentId (state, id) {
+    state.selectedId = id
   },
 
-  appendSprint (state, sprint) {
-    state.sprints.push(sprint)
+  append (state, sprint) {
+    state.all.push(sprint)
   },
 
   updateScrum (state, { scrum }) {
     state.id = scrum.id
     state.points = scrum.points
-    state.sprints = scrum.sprints
+  },
+
+  updateSprints (state, { sprints }) {
+    state.all = sprints
   }
 }
