@@ -3,7 +3,7 @@ import scrumApi from '../api/scrum'
 export const state = () => ({
   points: {},
   sprints: [],
-  currentSprintId: 1
+  selectedSprintId: null
 })
 
 export const getters = {
@@ -11,28 +11,28 @@ export const getters = {
     return Math.round(getters.pointsDone / state.sprints.length)
   },
 
-  inProgressSprint (state) {
+  currentSprint (state) {
     return [...state.sprints].pop()
   },
 
-  currentSprint (state) {
-    if (state.currentSprintId) {
-      return state.sprints.find(sprint => sprint.id === state.currentSprintId)
-    } else {
+  selectedSprint (state) {
+    if (!state.selectedSprintId) {
       return null
     }
+
+    return state.sprints.find(sprint => sprint.id === state.selectedSprintId)
   },
 
-  inProgressIsCurrentSprint (state) {
-    if (state.currentSprint) {
-      return state.currentSprintId === state.inProgressSprint.id
-    } else {
+  selectedIsCurrentSprint (state, getters) {
+    if (!state.selectedSprintId || !getters.currentSprint) {
       return null
     }
+
+    return state.selectedSprintId === getters.currentSprint.id
   },
 
   newSprintId (state, getters) {
-    return getters.currentSprint.id
+    return getters.currentSprint.id + 1
   },
 
   pointsDone (state) {
@@ -42,7 +42,7 @@ export const getters = {
   },
 
   pointsDoneArray (state) {
-    return state.sprints.map(s => s.points.done)
+    return state.sprints.map(sprint => sprint.points.done)
   },
 
   plannedPoints (state) {
@@ -67,7 +67,7 @@ export const actions = {
 
   async createSprint ({ commit, state }, newSprint) {
     newSprint['days'] = parseInt(newSprint.days)
-    newSprint['currentSprintIddevelopers'] = parseInt(newSprint.developers)
+    newSprint['selectedSprintIddevelopers'] = parseInt(newSprint.developers)
     newSprint['scrumId'] = parseInt(1)
     newSprint['points'] = {
       planned: parseInt(newSprint.points),
@@ -94,7 +94,7 @@ export const actions = {
 
 export const mutations = {
   setCurrentSprintId (state, id) {
-    state.currentSprintId = id
+    state.selectedSprintId = id
   },
 
   appendSprint (state, sprint) {
