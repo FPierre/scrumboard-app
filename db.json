@@ -129,19 +129,19 @@
         },
         {
           "day": 2,
-          "done": 0
+          "done": null
         },
         {
           "day": 3,
-          "done": 0
+          "done": null
         },
         {
           "day": 4,
-          "done": 0
+          "done": null
         },
         {
           "day": 5,
-          "done": 0
+          "done": null
         }
       ]
     }

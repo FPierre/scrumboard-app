@@ -15,6 +15,10 @@ export const getters = {
     return [...state.sprints].pop()
   },
 
+  currentDay (state, getters) {
+    return getters.currentSprint.progress.find(progress => !progress.done).day
+  },
+
   selectedSprint (state) {
     if (!state.selectedSprintId) {
       return null
@@ -24,7 +28,7 @@ export const getters = {
   },
 
   selectedIsCurrentSprint (state, getters) {
-    if (!state.selectedSprintId || !getters.currentSprint) {
+    if (!state.selectedSprintId) {
       return null
     }
 

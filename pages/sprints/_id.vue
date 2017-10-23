@@ -13,7 +13,7 @@
           <h1 class='title'>Sprint #{{ sprint.id }}</h1>
 
           <template v-if='selectedIsCurrentSprint'>
-            <h2 class='subtitle'>Day {{ sprint.day }}/{{ sprint.days }}</h2>
+            <h2 class='subtitle'>Day {{ currentDay }}/{{ sprint.days }}</h2>
 
             <div class='field'>
               <label class='label'>How many points were done yesterday?</label>
@@ -52,6 +52,7 @@ export default {
   computed: {
     ...mapGetters({
       sprint: 'scrum/selectedSprint',
+      currentDay: 'scrum/currentDay',
       selectedIsCurrentSprint: 'scrum/selectedIsCurrentSprint'
     }),
     isSprint () {
