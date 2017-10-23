@@ -19,7 +19,7 @@ Vue.component('burndown-chart', {
   }
 })
 
-Vue.component('points-distribution-chart', {
+Vue.component('points-chart', {
   extends: Doughnut,
   props: ['data', 'options'],
   mounted () {

@@ -2,13 +2,13 @@
   <div class='login-component'>
     <form v-if='!isAuth' @submit.prevent='login'>
       <div class='columns is-centered' v-if='error'>
-        <div class='column is-half'>
+        <div class='column is-one-third'>
           <p class='error'>{{ error }}</p>
         </div>
       </div>
 
       <div class='columns is-centered'>
-        <div class='column is-half'>
+        <div class='column is-one-third'>
           <p class='has-text-centered'>
             <i>To login, use <b>demo</b> as username and <b>demo</b> as password.</i>
           </p>
@@ -16,7 +16,7 @@
       </div>
 
       <div class='columns is-centered'>
-        <div class='column is-half'>
+        <div class='column is-one-third'>
           <div class='field is-horizontal'>
             <div class='field-body'>
               <div class='field'>

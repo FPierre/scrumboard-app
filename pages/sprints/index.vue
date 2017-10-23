@@ -1,71 +1,68 @@
 <template>
   <div class='sprints-page'>
-    <section class='section'>
-      <div class='container'>
-        <div class='sprints-wrapper'>
-          <no-ssr>
-            <div>
-              <v-touch @pan='pan'>
-                <sprint v-for='sprint in sprints' :sprint='sprint' />
-              </v-touch>
-            </div>
-          </no-ssr>
-        </div>
-
-        <template v-if='showLine'>
-          <nav class='level'>
-            <div class='level-item has-text-centered'>
-              <div>
-                <p class='heading'>Sprints</p>
-                <p class='title'>{{ sprints.length }}</p>
-              </div>
-            </div>
-
-            <div class='level-item has-text-centered'>
-              <div>
-                <p class='heading'>Velocity</p>
-                <p class='title'>{{ velocity }}</p>
-              </div>
-            </div>
-
-            <div class='level-item has-text-centered'>
-              <div>
-                <p class='heading'>Followers</p>
-                <p class='title'>456K</p>
-              </div>
-            </div>
-
-            <div class='level-item has-text-centered'>
-              <div>
-                <p class='heading'>Likes</p>
-                <p class='title'>789</p>
-              </div>
-            </div>
-          </nav>
-
-          <div class='columns'>
-            <div class='column'>
-              <velocity-chart :data='velocityData' :options='velocityOptions' />
-            </div>
-
-            <div class='column'>
-              <points-distribution-chart :data='pointsDistributionData'
-                                         :options='pointsDistributionOptions' />
-            </div>
-          </div>
-        </template>
-      </div>
-
-      <!-- <div class='test'>
+    <div class='container'>
+      <div class='sprints-wrapper'>
         <no-ssr>
           <div>
-            <v-touch class='t' @pan='pan' @panend='panend' v-for='sprint in sprints'>
-              <sprint :sprint='sprint'></sprint>
+            <v-touch @pan='pan'>
+              <sprint v-for='sprint in sprints' :sprint='sprint' />
             </v-touch>
           </div>
         </no-ssr>
-      </div> -->
-    </section>
+      </div>
+
+      <template v-if='showLine'>
+        <nav class='level'>
+          <div class='level-item has-text-centered'>
+            <div>
+              <p class='heading'>Sprints</p>
+              <p class='title'>{{ sprints.length }}</p>
+            </div>
+          </div>
+
+          <div class='level-item has-text-centered'>
+            <div>
+              <p class='heading'>Velocity</p>
+              <p class='title'>{{ velocity }}</p>
+            </div>
+          </div>
+
+          <div class='level-item has-text-centered'>
+            <div>
+              <p class='heading'>Followers</p>
+              <p class='title'>456K</p>
+            </div>
+          </div>
+
+          <div class='level-item has-text-centered'>
+            <div>
+              <p class='heading'>Likes</p>
+              <p class='title'>789</p>
+            </div>
+          </div>
+        </nav>
+
+        <div class='columns'>
+          <div class='column'>
+            <velocity-chart :data='velocityData' :options='velocityOptions' />
+          </div>
+
+          <div class='column'>
+            <points-chart :data='pointsData' :options='pointsOptions' />
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <!-- <div class='test'>
+      <no-ssr>
+        <div>
+          <v-touch class='t' @pan='pan' @panend='panend' v-for='sprint in sprints'>
+            <sprint :sprint='sprint'></sprint>
+          </v-touch>
+        </div>
+      </no-ssr>
+    </div> -->
   </div>
 </template>
 
@@ -112,7 +109,7 @@ export default {
         responsive: true
       }
     },
-    pointsDistributionData () {
+    pointsData () {
       return {
         labels: ['Planned', 'Unplanned'],
         datasets: [
@@ -123,7 +120,7 @@ export default {
         ]
       }
     },
-    pointsDistributionOptions () {
+    pointsOptions () {
       return {
         maintainAspectRatio: false,
         responsive: true
