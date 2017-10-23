@@ -1,61 +1,50 @@
 <template>
   <div class='sprints-page'>
-    <div class='tabs is-centered'>
-      <ul>
-        <li :class='{ "is-active": isSprints }'><a @click='currentTab = "sprints"'>Sprints</a></li>
-        <li :class='{ "is-active": isStats }'><a @click='currentTab = "stats"'>Stats</a></li>
-      </ul>
-    </div>
-
     <div class='container'>
-      <div class='tabs-content'>
-        <template v-if='isSprints'>
-          <div class='sprints-wrapper'>
-            <no-ssr>
-              <div>
-                <v-touch @pan='pan'>
-                  <sprint v-for='sprint in sprints' :sprint='sprint'></sprint>
-                </v-touch>
-              </div>
-            </no-ssr>
+      <div class='sprints-wrapper'>
+        <no-ssr>
+          <div>
+            <v-touch @pan='pan'>
+              <sprint v-for='sprint in sprints' :sprint='sprint' />
+            </v-touch>
           </div>
-        </template>
-
-        <template v-else-if='isStats && showLine'>
-          <nav class='level'>
-            <div class='level-item has-text-centered'>
-              <div>
-                <p class='heading'>Sprints</p>
-                <p class='title'>{{ sprints.length }}</p>
-              </div>
-            </div>
-
-            <div class='level-item has-text-centered'>
-              <div>
-                <p class='heading'>Velocity</p>
-                <p class='title'>{{ velocity }}</p>
-              </div>
-            </div>
-
-            <div class='level-item has-text-centered'>
-              <div>
-                <p class='heading'>Followers</p>
-                <p class='title'>456K</p>
-              </div>
-            </div>
-
-            <div class='level-item has-text-centered'>
-              <div>
-                <p class='heading'>Likes</p>
-                <p class='title'>789</p>
-              </div>
-            </div>
-          </nav>
-
-          <velocity-chart :data='velocityData' :options='velocityOptions'/>
-          <points-distribution-chart :data='pointsDistributionData' :options='pointsDistributionOptions'/>
-        </template>
+        </no-ssr>
       </div>
+
+      <template v-if='showLine'>
+        <nav class='level'>
+          <div class='level-item has-text-centered'>
+            <div>
+              <p class='heading'>Sprints</p>
+              <p class='title'>{{ sprints.length }}</p>
+            </div>
+          </div>
+
+          <div class='level-item has-text-centered'>
+            <div>
+              <p class='heading'>Velocity</p>
+              <p class='title'>{{ velocity }}</p>
+            </div>
+          </div>
+
+          <div class='level-item has-text-centered'>
+            <div>
+              <p class='heading'>Followers</p>
+              <p class='title'>456K</p>
+            </div>
+          </div>
+
+          <div class='level-item has-text-centered'>
+            <div>
+              <p class='heading'>Likes</p>
+              <p class='title'>789</p>
+            </div>
+          </div>
+        </nav>
+
+        <velocity-chart :data='velocityData' :options='velocityOptions' />
+        <points-distribution-chart :data='pointsDistributionData' :options='pointsDistributionOptions' />
+      </template>
     </div>
 
     <!-- <div class='test'>
@@ -77,7 +66,6 @@ import Sprint from '~/components/sprintsPage/Sprint'
 export default {
   data () {
     return {
-      currentTab: 'sprints',
       touchedSprintHtml: null,
       showLine: false
     }
@@ -95,7 +83,7 @@ export default {
     }),
     velocityData () {
       return {
-        labels: this.pointsDoneArray.map((p, i) => i + 1),
+        labels: this.pointsDoneArray.map((_, index) => index + 1),
         datasets: [
           {
             borderColor: '#bbb',
@@ -130,12 +118,6 @@ export default {
         maintainAspectRatio: false,
         responsive: true
       }
-    },
-    isSprints () {
-      return this.currentTab === 'sprints'
-    },
-    isStats () {
-      return this.currentTab === 'stats'
     }
   },
   mounted () {

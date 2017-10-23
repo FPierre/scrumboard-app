@@ -1,20 +1,17 @@
 <template>
   <div class='sprint-page'>
-    <div class='tabs is-centered'>
-      <ul>
-        <li :class='{ "is-active": isSprint }'><a @click='currentTab = "sprint"'>Sprint</a></li>
-        <li :class='{ "is-active": isStats }'><a @click='currentTab = "stats"'>Stats</a></li>
-      </ul>
-    </div>
-
     <div class='container'>
-      <div class='tabs-content'>
-        <template v-if='isSprint'>
+      <div class='columns'>
+        <div class='column has-text-centered'>
           <h1 class='title'>Sprint #{{ sprint.id }}</h1>
+          <h2 class='subtitle' v-if='selectedIsCurrentSprint'>Day {{ currentDay }}/{{ sprint.days }}</h2>
+          <h2 class='subtitle' v-else>Done</h2>
+        </div>
+      </div>
 
-          <template v-if='selectedIsCurrentSprint'>
-            <h2 class='subtitle'>Day {{ currentDay }}/{{ sprint.days }}</h2>
-
+      <template v-if='selectedIsCurrentSprint'>
+        <div class='columns'>
+          <div class='column is-half is-offset-one-quarter'>
             <div class='field'>
               <label class='label'>How many points were done yesterday?</label>
 
@@ -22,17 +19,20 @@
                 <input class='input' type='text' placeholder='3, 4, 5, ...' v-model='pointsDone'>
               </div>
             </div>
+          </div>
+        </div>
 
-            <button class='button is-medium is-success'>Save</button>
-          </template>
-          <template v-else>
-            <h2 class='subtitle'>Done</h2>
-          </template>
-        </template>
+        <div class='columns'>
+          <div class='column is-half is-offset-one-quarter'>
+            <button class='button is-medium is-success' @click='submit'>Save</button>
+          </div>
+        </div>
+      </template>
 
-        <template v-else-if='isStats'>
+      <div class='columns'>
+        <div class='column is-half is-offset-one-quarter'>
           <burndown-chart v-if='showLine' :data='burndownData' :options='options' />
-        </template>
+        </div>
       </div>
     </div>
   </div>
@@ -44,7 +44,6 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      currentTab: 'sprint',
       pointsDone: 0,
       showLine: false
     }
@@ -55,12 +54,6 @@ export default {
       currentDay: 'scrum/currentDay',
       selectedIsCurrentSprint: 'scrum/selectedIsCurrentSprint'
     }),
-    isSprint () {
-      return this.currentTab === 'sprint'
-    },
-    isStats () {
-      return this.currentTab === 'stats'
-    },
     labels () {
       return this.sprint.progress.map(d => d.day)
     },
