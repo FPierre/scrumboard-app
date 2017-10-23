@@ -1,42 +1,42 @@
 <template>
   <div class='sprint-page'>
-    <section class='section'>
-      <div class='container'>
-        <div class='columns'>
-          <div class='column has-text-centered'>
-            <h1 class='title'>Sprint #{{ sprint.id }}</h1>
-            <h2 class='subtitle' v-if='selectedIsCurrentSprint'>Day {{ currentDay }}/{{ sprint.days }}</h2>
-            <h2 class='subtitle' v-else>Done</h2>
-          </div>
+    <div class='container'>
+      <div class='columns'>
+        <div class='column has-text-centered'>
+          <h1 class='title'>Sprint #{{ sprint.id }}</h1>
+          <h2 class='subtitle'>
+            <template v-if='selectedIsCurrentSprint'>Day {{ currentDay }}/{{ sprint.days }}</template>
+            <template v-else>Done</template>
+          </h2>
         </div>
+      </div>
 
-        <template v-if='selectedIsCurrentSprint'>
-          <div class='columns'>
-            <div class='column is-half is-offset-one-quarter'>
-              <div class='field'>
-                <label class='label'>How many points were done yesterday?</label>
+      <template v-if='selectedIsCurrentSprint'>
+        <div class='columns'>
+          <div class='column is-half is-offset-one-quarter'>
+            <div class='field'>
+              <label class='label'>How many points were done yesterday?</label>
 
-                <div class='control'>
-                  <input class='input' type='text' placeholder='3, 4, 5, ...' v-model='pointsDone'>
-                </div>
+              <div class='control'>
+                <input class='input' type='text' placeholder='3, 4, 5, ...' v-model='pointsDone'>
               </div>
             </div>
           </div>
-
-          <div class='columns'>
-            <div class='column is-half is-offset-one-quarter'>
-              <button class='button is-medium is-success' @click='submit'>Save</button>
-            </div>
-          </div>
-        </template>
+        </div>
 
         <div class='columns'>
           <div class='column is-half is-offset-one-quarter'>
-            <burndown-chart v-if='showLine' :data='burndownData' :options='options' />
+            <button class='button is-medium is-success' @click='submit'>Save</button>
           </div>
         </div>
+      </template>
+
+      <div class='columns'>
+        <div class='column is-half is-offset-one-quarter'>
+          <burndown-chart v-if='showLine' :data='burndownData' :options='options' />
+        </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
