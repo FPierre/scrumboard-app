@@ -1,46 +1,26 @@
 <template>
   <div class='sprints-page'>
     <div class='container'>
-      <div class='sprints-wrapper'>
-        <no-ssr>
-          <div>
-            <v-touch @pan='pan'>
-              <sprint v-for='sprint in sprints' :sprint='sprint' />
-            </v-touch>
+      <div class='columns'>
+        <div class='column'>
+          <div class='sprints-wrapper'>
+            <no-ssr>
+              <div>
+                <v-touch @pan='pan'>
+                  <sprint v-for='sprint in sprints' :sprint='sprint' />
+                </v-touch>
+              </div>
+            </no-ssr>
           </div>
-        </no-ssr>
+        </div>
       </div>
 
       <template v-if='showLine'>
-        <nav class='level'>
-          <div class='level-item has-text-centered'>
-            <div>
-              <p class='heading'>Sprints</p>
-              <p class='title'>{{ sprints.length }}</p>
-            </div>
+        <div class='columns'>
+          <div class='column'>
+            <simples-stats />
           </div>
-
-          <div class='level-item has-text-centered'>
-            <div>
-              <p class='heading'>Velocity</p>
-              <p class='title'>{{ velocity }}</p>
-            </div>
-          </div>
-
-          <div class='level-item has-text-centered'>
-            <div>
-              <p class='heading'>Followers</p>
-              <p class='title'>456K</p>
-            </div>
-          </div>
-
-          <div class='level-item has-text-centered'>
-            <div>
-              <p class='heading'>Likes</p>
-              <p class='title'>789</p>
-            </div>
-          </div>
-        </nav>
+        </div>
 
         <div class='columns'>
           <div class='column'>
@@ -53,22 +33,13 @@
         </div>
       </template>
     </div>
-
-    <!-- <div class='test'>
-      <no-ssr>
-        <div>
-          <v-touch class='t' @pan='pan' @panend='panend' v-for='sprint in sprints'>
-            <sprint :sprint='sprint'></sprint>
-          </v-touch>
-        </div>
-      </no-ssr>
-    </div> -->
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import Sprint from '~/components/sprintsPage/Sprint'
+import SimplesStats from '~/components/sprints/index/SimplesStats'
+import Sprint from '~/components/sprints/index/Sprint'
 
 export default {
   data () {
@@ -84,8 +55,7 @@ export default {
     ...mapGetters({
       pointsDoneArray: 'sprint/pointsDoneArray',
       plannedPoints: 'scrum/plannedPoints',
-      unplannedPoints: 'scrum/unplannedPoints',
-      velocity: 'scrum/velocity'
+      unplannedPoints: 'scrum/unplannedPoints'
     }),
     velocityData () {
       return {
@@ -155,30 +125,13 @@ export default {
     // }
   },
   components: {
+    SimplesStats,
     Sprint
   }
 }
 </script>
 
 <style lang='scss' scoped>
-// .test {
-//   // overflow-x: auto;
-//   white-space: nowrap;
-// }
-//
-// .sprint-component,
-// .t {
-//   // background-color: red;
-//   display: inline-block;
-//   height: 150px;
-//   margin: {
-//     left: .7rem;
-//     right: .7rem;
-//   }
-//   width: 200px;
-// }
-
-
 .sprints-wrapper {
   white-space: nowrap;
 }
