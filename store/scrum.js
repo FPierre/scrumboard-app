@@ -7,9 +7,7 @@ export const state = () => ({
 
 export const getters = {
   velocity (state, getters, rootState, rootGetters) {
-    console.log('getters.pointsDone', getters.pointsDone)
-
-    return Math.round(getters.pointsDone / rootState.sprint.all.length)
+    return Math.round(rootGetters['sprint/pointsDone'] / rootState.sprint.all.length)
   },
 
   plannedPoints (state) {
