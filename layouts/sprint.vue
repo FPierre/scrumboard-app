@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import AppNavbar from '@/components/sprintsPage/AppNavbar'
+import AppNavbar from '@/components/sprints/AppNavbar'
 
 export default {
   // middleware: 'auth',

@@ -33,14 +33,7 @@ export default {
   methods: {
     async logout () {
       await this.$store.dispatch('logout')
-
       this.$router.replace({ name: 'index' })
-
-      // try {
-      //   await this.$store.dispatch('logout')
-      // } catch (e) {
-      //   this.error = e.message
-      // }
     }
   }
 }

@@ -44,10 +44,16 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  head () {
+    return {
+      title: `Sprint #${this.selectedId}`
+    }
+  },
   data () {
     return {
       pointsDone: 0,
-      showLine: false
+      showLine: false,
+      selectedId: null
     }
   },
   computed: {
@@ -112,8 +118,8 @@ export default {
     }
   },
   created () {
-    const selectedId = parseInt(this.$route.params.id)
-    this.setCurrentId(selectedId)
+    this.selectedId = parseInt(this.$route.params.id)
+    this.setCurrentId(this.selectedId)
 
     // showLine will only be set to true on the client. This keeps the DOM-tree in sync.
     this.showLine = true

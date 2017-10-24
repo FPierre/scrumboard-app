@@ -15,13 +15,13 @@
         </div>
       </div>
 
-      <template v-if='showLine'>
-        <div class='columns'>
-          <div class='column'>
-            <simples-stats />
-          </div>
+      <div class='columns'>
+        <div class='column'>
+          <simples-stats />
         </div>
+      </div>
 
+      <template v-if='showLine'>
         <div class='columns'>
           <div class='column'>
             <velocity-chart :data='velocityData' :options='velocityOptions' />
@@ -42,6 +42,7 @@ import SimplesStats from '~/components/sprints/index/SimplesStats'
 import Sprint from '~/components/sprints/index/Sprint'
 
 export default {
+  head: () => ({ title: 'Sprints' }),
   data () {
     return {
       touchedSprintHtml: null,

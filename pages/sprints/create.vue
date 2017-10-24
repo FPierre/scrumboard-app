@@ -96,6 +96,7 @@ import { mapGetters, mapActions } from 'vuex'
 import Steps from '~/components/Steps'
 
 export default {
+  head: () => ({ title: 'Create sprint' }),
   data () {
     return {
       days: 0,
