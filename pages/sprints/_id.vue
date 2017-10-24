@@ -52,9 +52,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      sprint: 'scrum/selectedSprint',
-      currentDay: 'scrum/currentDay',
-      selectedIsCurrentSprint: 'scrum/selectedIsCurrentSprint'
+      sprint: 'sprint/selected',
+      currentDay: 'sprint/currentDay',
+      selectedIsCurrentSprint: 'sprint/selectedIsCurrentSprint'
     }),
     labels () {
       return this.sprint.progress.map(d => d.day)
@@ -112,14 +112,19 @@ export default {
     }
   },
   created () {
-    const selectedSprintId = parseInt(this.$route.params.id)
-    this.setCurrentSprintId(selectedSprintId)
+    const selectedId = parseInt(this.$route.params.id)
+    this.setCurrentId(selectedId)
 
     // showLine will only be set to true on the client. This keeps the DOM-tree in sync.
     this.showLine = true
   },
-  methods: mapActions({
-    setCurrentSprintId: 'scrum/setCurrentSprintId'
-  })
+  methods: {
+    ...mapActions({
+      setCurrentId: 'sprint/setCurrentId'
+    }),
+    submit () {
+
+    }
+  }
 }
 </script>

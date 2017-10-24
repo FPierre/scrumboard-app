@@ -1,12 +1,15 @@
 import scrumApi from '../api/scrum'
 
 export const state = () => ({
+  id: null,
   points: {}
 })
 
 export const getters = {
-  velocity (state, getters) {
-    return Math.round(getters.pointsDone / state.sprints.length)
+  velocity (state, getters, rootState, rootGetters) {
+    console.log('getters.pointsDone', getters.pointsDone)
+
+    return Math.round(getters.pointsDone / rootState.sprint.all.length)
   },
 
   plannedPoints (state) {
@@ -21,8 +24,12 @@ export const getters = {
 export const actions = {
   async all ({ commit }) {
     const { scrum } = await scrumApi.all()
+    const { sprints } = scrum
+
+    delete scrum.sprints
 
     commit('updateScrum', { scrum })
+    commit('sprint/updateSprints', { sprints }, { root: true })
   }
 }
 

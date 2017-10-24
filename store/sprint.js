@@ -46,16 +46,6 @@ export const getters = {
 }
 
 export const actions = {
-  async all ({ commit }) {
-    const { scrum } = await scrumApi.all()
-    const { sprints } = scrum
-
-    delete scrum.sprints
-
-    commit('updateScrum', { scrum })
-    commit('updateSprints', { sprints })
-  },
-
   setCurrentId ({ commit }, id) {
     commit('setCurrentId', id)
   },

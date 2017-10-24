@@ -25,10 +25,10 @@ export default {
   props: ['sprint'],
   computed: {
     ...mapGetters({
-      currentSprint: 'scrum/currentSprint'
+      current: 'sprint/current'
     }),
     isCurrent () {
-      return this.currentSprint.id === this.sprint.id
+      return this.current.id === this.sprint.id
     }
   },
   methods: {
