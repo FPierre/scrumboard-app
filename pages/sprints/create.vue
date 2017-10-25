@@ -4,7 +4,7 @@
 
     <section class='hero is-fullheight'>
       <div class='hero-body'>
-        <div class='container has-text-centered'>
+        <div class='container'>
           <div class='columns'>
             <div class='column is-half is-offset-one-quarter'>
               <div class='field'>
@@ -31,7 +31,7 @@
 
     <section id='points-input-wrapper' class='hero is-fullheight'>
       <div class='hero-body'>
-        <div class='container has-text-centered'>
+        <div class='container'>
           <div class='columns'>
             <div class='column is-half is-offset-one-quarter'>
               <div class='field'>
@@ -57,7 +57,7 @@
 
     <section id='days-input-wrapper' class='hero is-fullheight'>
       <div class='hero-body'>
-        <div class='container has-text-centered'>
+        <div class='container'>
           <div class='columns'>
             <div class='column is-half is-offset-one-quarter'>
               <div class='field' id='days-input-wrapper'>

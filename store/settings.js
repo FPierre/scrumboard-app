@@ -2,12 +2,9 @@
 
 export const state = () => ({
   fillNewSprint: {
-    status: true,
-    default: {
-      days: 0,
-      developers: 0,
-      points: 0
-    }
+    days: null,
+    developers: null,
+    points: null
   }
 })
 
@@ -16,13 +13,13 @@ export const getters = {
 }
 
 export const actions = {
-  updateFillNewSprintStatus ({ commit }, status) {
-    commit('updateFillNewSprintStatus', { status })
+  updateFillNewSprint ({ commit }, { key, value }) {
+    commit('updateFillNewSprint', { key, value })
   }
 }
 
 export const mutations = {
-  updateFillNewSprintStatus (state, { status }) {
-    state.status = status
+  updateFillNewSprint (state, { key, value }) {
+    state.fillNewSprint[key] = value
   }
 }
