@@ -22,7 +22,7 @@
             </div>
 
             <div class='column is-1'>
-              <steps :size='3' :current='1' class='is-pulled-right'></steps>
+              <steps :size='3' :current='1' />
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@
             </div>
 
             <div class='column is-1'>
-              <steps :size='3' :current='2' class='is-pulled-right'></steps>
+              <steps :size='3' :current='2' />
             </div>
           </div>
         </div>
@@ -68,13 +68,13 @@
                          class='input'
                          placeholder='5, 10, 20, ...'
                          v-model='days'
-                         @keyup.enter.stop='focusButton'>
+                         @keyup.enter.sprints.create.stop='focusButton'>
                 </div>
               </div>
             </div>
 
             <div class='column is-1'>
-              <steps :size='3' :current='3' class='is-pulled-right'></steps>
+              <steps :size='3' :current='3' />
             </div>
           </div>
 
@@ -93,7 +93,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import Steps from '~/components/Steps'
+import Steps from '~/components/sprints/create/Steps'
 
 export default {
   head: () => ({ title: 'Create sprint' }),
