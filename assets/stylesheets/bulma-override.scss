@@ -2,7 +2,7 @@
 
 $red: #ce473f;
 // $green: #a9e12c;
-$white-bis: hsl(0, 0%, 99%);
+$white-bis: #fdfdfd;
 
 $primary: $red;
 
@@ -14,6 +14,8 @@ $input-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
 $input-focus-border-color: none;
 $input-focus-box-shadow-color: none;
 $input-hover-border-color: none;
+
+$notification-radius: $radius-small;
 
 @import '~bulma/bulma';
 

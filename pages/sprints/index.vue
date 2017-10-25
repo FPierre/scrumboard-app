@@ -55,8 +55,8 @@ export default {
     }),
     ...mapGetters({
       pointsDoneArray: 'sprints/pointsDoneArray',
-      plannedPoints: 'scrum/plannedPoints',
-      unplannedPoints: 'scrum/unplannedPoints'
+      plannedPointsInt: 'scrum/plannedPointsInt',
+      unplannedPointsInt: 'scrum/unplannedPointsInt'
     }),
     velocityData () {
       return {
@@ -85,7 +85,7 @@ export default {
         datasets: [
           {
             // borderColor: '#bbb',
-            data: [this.plannedPoints, this.unplannedPoints]
+            data: [this.plannedPointsInt, this.unplannedPointsInt]
           }
         ]
       }

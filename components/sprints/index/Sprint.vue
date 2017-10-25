@@ -25,7 +25,7 @@ export default {
   props: ['sprint'],
   computed: {
     ...mapGetters({
-      current: 'sprint/current'
+      current: 'sprints/current'
     }),
     isCurrent () {
       return this.current.id === this.sprint.id

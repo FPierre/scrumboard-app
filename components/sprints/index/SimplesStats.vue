@@ -1,34 +1,36 @@
 <template>
   <div class='simples-stats-component'>
-    <nav class='level is-mobile'>
-      <div class='level-item has-text-centered'>
-        <div>
-          <p class='heading'>Sprints</p>
-          <p class='title'>{{ sprints.length }}</p>
+    <div class='notification is-primary'>
+      <nav class='level is-mobile'>
+        <div class='level-item has-text-centered'>
+          <div>
+            <p class='heading'>Sprints</p>
+            <p class='title'>{{ sprints.length }}</p>
+          </div>
         </div>
-      </div>
 
-      <div class='level-item has-text-centered'>
-        <div>
-          <p class='heading'>Velocity</p>
-          <p class='title'>{{ velocity }}</p>
+        <div class='level-item has-text-centered'>
+          <div>
+            <p class='heading'>Velocity</p>
+            <p class='title'>{{ velocity }} pts</p>
+          </div>
         </div>
-      </div>
 
-      <div class='level-item has-text-centered'>
-        <div>
-          <p class='heading'>Followers</p>
-          <p class='title'>456K</p>
+        <div class='level-item has-text-centered'>
+          <div>
+            <p class='heading'>Unplanned</p>
+            <p class='title'>{{ unplannedPointsPercent }}%</p>
+          </div>
         </div>
-      </div>
 
-      <div class='level-item has-text-centered'>
-        <div>
-          <p class='heading'>Likes</p>
-          <p class='title'>789</p>
+        <div class='level-item has-text-centered'>
+          <div>
+            <p class='heading'>Likes</p>
+            <p class='title'>789</p>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -41,7 +43,8 @@ export default {
       sprints: state => state.sprints.all
     }),
     ...mapGetters({
-      velocity: 'scrum/velocity'
+      velocity: 'scrum/velocity',
+      unplannedPointsPercent: 'scrum/unplannedPointsPercent'
     })
   }
 }

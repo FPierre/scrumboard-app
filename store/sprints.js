@@ -30,9 +30,7 @@ export const getters = {
     return state.selectedId === getters.current.id
   },
 
-  newSprintId (state, getters) {
-    return getters.current.id + 1
-  },
+  newSprintId: (state, getters) => getters.current.id + 1,
 
   pointsDone (state) {
     return state.all.reduce((memo, sprint) => {
@@ -40,9 +38,7 @@ export const getters = {
     }, 0)
   },
 
-  pointsDoneArray (state) {
-    return state.all.map(sprint => sprint.points.done)
-  }
+  pointsDoneArray: state => state.all.map(sprint => sprint.points.done)
 }
 
 export const actions = {

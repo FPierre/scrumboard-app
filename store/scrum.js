@@ -1,4 +1,3 @@
-
 import scrumApi from '../api/scrum'
 
 export const state = () => ({
@@ -11,12 +10,12 @@ export const getters = {
     return Math.round(rootGetters['sprints/pointsDone'] / rootState.sprints.all.length)
   },
 
-  plannedPoints (state) {
-    return state.points.planned
-  },
+  plannedPointsInt: state => state.points.planned,
 
-  unplannedPoints (state) {
-    return state.points.unplanned
+  unplannedPointsInt: state => state.points.unplanned,
+
+  unplannedPointsPercent (state, getters) {
+    return Math.round((getters.unplannedPointsInt * 100) / getters.plannedPointsInt)
   }
 }
 
