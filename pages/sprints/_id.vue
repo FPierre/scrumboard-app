@@ -58,9 +58,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      sprint: 'sprint/selected',
-      currentDay: 'sprint/currentDay',
-      selectedIsCurrentSprint: 'sprint/selectedIsCurrentSprint'
+      sprint: 'sprints/selected',
+      currentDay: 'sprints/currentDay',
+      selectedIsCurrentSprint: 'sprints/selectedIsCurrentSprint'
     }),
     labels () {
       return this.sprint.progress.map(d => d.day)
@@ -126,7 +126,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      setCurrentId: 'sprint/setCurrentId'
+      setCurrentId: 'sprints/setCurrentId'
     }),
     submit () {
 

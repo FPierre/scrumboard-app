@@ -105,8 +105,20 @@ export default {
     }
   },
   computed: mapGetters({
-    newSprintId: 'scrum/newSprintId'
+    newSprintId: 'sprints/newSprintId',
+    current: 'sprints/current'
   }),
+  created () {
+    // Non existant when creates first sprint
+    if (this.current.days) {
+      this.days = this.current.days
+    }
+
+    // Non existant when creates first sprint
+    if (this.current.developers) {
+      this.developers = this.current.developers
+    }
+  },
   methods: {
     ...mapActions({
       createSprint: 'scrum/createSprint'

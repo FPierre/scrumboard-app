@@ -7,7 +7,7 @@ export const state = () => ({
 
 export const getters = {
   velocity (state, getters, rootState, rootGetters) {
-    return Math.round(rootGetters['sprint/pointsDone'] / rootState.sprint.all.length)
+    return Math.round(rootGetters['sprints/pointsDone'] / rootState.sprints.all.length)
   },
 
   plannedPoints (state) {
@@ -27,7 +27,7 @@ export const actions = {
     delete scrum.sprints
 
     commit('updateScrum', { scrum })
-    commit('sprint/updateSprints', { sprints }, { root: true })
+    commit('sprints/updateSprints', { sprints }, { root: true })
   }
 }
 

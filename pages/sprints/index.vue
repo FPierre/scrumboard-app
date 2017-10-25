@@ -51,10 +51,10 @@ export default {
   },
   computed: {
     ...mapState({
-      sprints: state => state.sprint.all
+      sprints: state => state.sprints.all
     }),
     ...mapGetters({
-      pointsDoneArray: 'sprint/pointsDoneArray',
+      pointsDoneArray: 'sprints/pointsDoneArray',
       plannedPoints: 'scrum/plannedPoints',
       unplannedPoints: 'scrum/unplannedPoints'
     }),

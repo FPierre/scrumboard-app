@@ -38,7 +38,7 @@ import { mapState, mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapState({
-      sprints: state => state.sprint.all
+      sprints: state => state.sprints.all
     }),
     ...mapGetters({
       velocity: 'scrum/velocity'
