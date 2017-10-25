@@ -18,6 +18,12 @@
           </div>
 
           <div class='navbar-item'>
+            <nuxt-link :to='{ name: "settings" }' class='button is-primary'>
+              Settings
+            </nuxt-link>
+          </div>
+
+          <div class='navbar-item'>
             <button class='button is-primary' @click='logout'>
               Logout
             </button>
