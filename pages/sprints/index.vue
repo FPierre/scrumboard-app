@@ -24,11 +24,15 @@
       <template v-if='showLine'>
         <div class='columns'>
           <div class='column'>
-            <velocity-chart :data='velocityData' :options='velocityOptions' />
+            <div class='notification is-white'>
+              <velocity-chart :data='velocityData' :options='velocityOptions' />
+            </div>
           </div>
 
           <div class='column'>
-            <points-chart :data='pointsData' :options='pointsOptions' />
+            <div class='notification is-white'>
+              <points-chart :data='pointsData' :options='pointsOptions' />
+            </div>
           </div>
         </div>
       </template>
@@ -63,7 +67,7 @@ export default {
         labels: this.pointsDoneArray.map((_, index) => index + 1),
         datasets: [
           {
-            borderColor: '#bbb',
+            borderColor: '#ce473f',
             data: this.pointsDoneArray,
             fill: false,
             label: 'Velocity',
@@ -84,7 +88,7 @@ export default {
         labels: ['Planned', 'Unplanned'],
         datasets: [
           {
-            // borderColor: '#bbb',
+            backgroundColor: ['#ce473f', '#aa473f'],
             data: [this.plannedPointsInt, this.unplannedPointsInt]
           }
         ]
